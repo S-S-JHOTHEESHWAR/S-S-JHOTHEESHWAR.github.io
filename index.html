@@ -1,339 +1,287 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jhotheeshwar S S | Edge AI & Embedded Systems Engineer</title>
-  <meta name="description" content="Personal portfolio of Jhotheeshwar S S — Edge AI, FPGA, RTOS, and Embedded Systems Engineer." />
-  <meta name="theme-color" content="#000000" />
-
-  <!-- Fonts: Satoshi (sans) + Instrument Serif (serif) -->
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S S JHOTHEESHWAR | Edge AI & Embedded Systems Engineer</title>
+  <meta name="description" content="Portfolio of S S Jhotheeshwar — Electronics & VLSI Engineer specializing in Edge AI, FPGA Acceleration, RTOS, and Embedded Hardware Systems." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  
+  <!-- Google Fonts: Inter & Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      border: 0 solid #e5e7eb;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg: #000000;
+      --card-bg: #0d0d0f;
+      --card-hover: #141418;
+      --card-border: #222227;
+      --card-border-hover: #3a3a44;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #ffffff;
+      --accent-muted: #27272a;
+      --highlight: #38bdf8;
     }
 
-    html {
-      line-height: 1.6;
-      -webkit-text-size-adjust: 100%;
-      tab-size: 4;
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      background-color: #000000;
-      color: #ffffff;
-      font-family: 'Satoshi', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-weight: 300;
-      letter-spacing: 0.01em; /* Standard comfortable letter-spacing */
-      min-height: 100vh;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-size: inherit;
-      font-weight: inherit;
-      letter-spacing: 0.01em; /* Standard open letter-spacing */
-    }
-
-    a { color: inherit; text-decoration: inherit; }
-    button { cursor: pointer; background: transparent; border: none; color: inherit; font: inherit; }
-    img, svg, video { display: block; vertical-align: middle; }
-    img, video { max-width: 100%; height: auto; }
-    ul, ol { list-style: none; }
-    blockquote, p { margin: 0; }
-
-    /* ===== FONT CLASSES ===== */
     .font-serif {
-      font-family: 'Instrument Serif', Georgia, serif;
-    }
-    .font-sans {
-      font-family: 'Satoshi', system-ui, sans-serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
     }
 
-    /* ===== LAYOUT ===== */
-    .flex { display: flex; }
-    .flex-col { flex-direction: column; }
-    .flex-1 { flex: 1 1 0%; }
-    .min-h-screen { min-height: 100vh; }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
+    /* Container */
     .container {
       width: 100%;
-      max-width: 1320px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.25rem;
-      padding-right: 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    @media (min-width: 640px) { .container { max-width: 640px; } }
-    @media (min-width: 768px) { .container { max-width: 768px; } }
-    @media (min-width: 1024px) { .container { max-width: 1024px; } }
-    @media (min-width: 1280px) { .container { max-width: 1280px; } }
-    @media (min-width: 1536px) { .container { max-width: 1360px; } }
-
-    /* ===== HEADER ===== */
+    /* Header & Navigation */
     header {
       position: fixed;
       top: 0;
-      z-index: 50;
+      left: 0;
       width: 100%;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       transition: all 0.3s ease;
-      background-color: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(39, 39, 42, 0.6);
     }
 
-    .header-container {
+    .header-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 0.9rem 1rem;
-      max-width: 82rem;
-      margin: 0 auto;
+      padding: 0.9rem 0;
     }
 
-    .header-brand {
-      text-align: center;
+    .brand-title {
+      font-size: 1.25rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
       margin-bottom: 0.4rem;
     }
 
-    .header-brand a {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.25rem;
-      letter-spacing: 0.04em;
-      color: #ffffff;
-      font-weight: 500;
-    }
-
-    /* Desktop Nav */
-    .desktop-nav {
-      display: none;
+    nav.nav-links {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      width: 100%;
-      gap: 0.25rem;
-    }
-
-    @media (min-width: 768px) {
-      .desktop-nav { display: flex; }
+      gap: 2rem;
     }
 
     .nav-btn {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-      transition: color 0.15s ease;
-      position: relative;
-      margin-left: 1rem;
-      margin-right: 1rem;
-      color: #9ca3af;
       background: none;
       border: none;
+      color: var(--text-muted);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
       cursor: pointer;
+      position: relative;
       padding: 0.2rem 0;
+      transition: color 0.25s ease;
+      text-decoration: none;
     }
 
-    .nav-btn:hover { color: #d1d5db; }
-    .nav-btn.active { color: #ffffff; }
+    .nav-btn:hover,
+    .nav-btn.active {
+      color: #ffffff;
+    }
 
-    .nav-btn-underline {
+    .nav-btn::after {
+      content: '';
       position: absolute;
       left: 0;
       bottom: -3px;
+      width: 0;
       height: 2px;
       background: #ffffff;
-      transition: all 0.3s ease-in-out;
-      width: 0;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .nav-btn.active .nav-btn-underline {
+    .nav-btn:hover::after,
+    .nav-btn.active::after {
       width: 100%;
     }
 
-    /* Mobile hamburger button */
-    .mobile-menu-btn {
-      display: none;
+    .resume-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.08);
       color: #ffffff;
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-      transition: transform 0.3s ease-in-out;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .resume-nav-pill:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-toggle {
+      display: none;
       background: none;
       border: none;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    @media (max-width: 767px) {
-      .mobile-menu-btn { display: block; }
-      .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-        position: relative;
-        padding: 0.9rem 1.25rem;
-      }
-      .header-brand { margin-bottom: 0; }
-    }
-
-    /* Hamburger icon lines */
-    .hamburger-box {
-      position: relative;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    .hamburger-line {
-      position: absolute;
-      display: block;
-      height: 2px;
-      width: 1.5rem;
-      background: #ffffff;
-      transform-origin: center;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .hamburger-line:nth-child(1) { top: 0.25rem; }
-    .hamburger-line:nth-child(2) { top: 0.65rem; opacity: 1; }
-    .hamburger-line:nth-child(3) { top: 1.05rem; }
-
-    .mobile-menu-btn.open .hamburger-line:nth-child(1) {
-      top: 0.65rem;
-      transform: rotate(45deg);
-    }
-    .mobile-menu-btn.open .hamburger-line:nth-child(2) {
-      opacity: 0;
-      width: 0;
-    }
-    .mobile-menu-btn.open .hamburger-line:nth-child(3) {
-      top: 0.65rem;
-      transform: rotate(-45deg);
-    }
-
-    /* Mobile Drawer */
-    .mobile-drawer {
-      display: none;
-      background-color: #000000;
-      border-top: 1px solid #27272a;
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-      max-height: 0;
-      opacity: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    @media (max-width: 767px) {
-      .mobile-drawer { display: block; }
-    }
-
-    .mobile-drawer.open {
-      max-height: 400px;
-      opacity: 1;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .mobile-drawer-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 0 1rem;
-    }
-
-    .mobile-drawer .nav-btn {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      margin: 0;
-      padding: 0.5rem 0;
-      text-align: left;
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-      position: relative;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background-color: #000000;
       color: #ffffff;
-      padding-top: 7rem;
-      padding-bottom: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
     }
 
-    .hero-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .hero-content {
+    /* Hero Section */
+    .hero {
+      padding: 10rem 0 5.5rem;
       text-align: center;
-      max-width: 50rem;
-      margin: 0 auto;
+      position: relative;
     }
 
-    .hero-content > * + * {
-      margin-top: 1.5rem;
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     .hero-title {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      line-height: 1.18;
-      font-size: 3rem;
-    }
-
-    @media (min-width: 640px) { .hero-title { font-size: 3.75rem; } }
-    @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } }
-
-    .hero-subtitle {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #9ca3af;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-desc {
-      color: #9ca3af;
-      font-size: 1.125rem;
-      line-height: 1.8;
-      letter-spacing: 0.01em;
-    }
-
-    /* ===== COMMON SECTION STYLES ===== */
-    .section-projects {
-      padding-top: 6rem;
-      padding-bottom: 7rem;
-      background-color: #000000;
+      font-size: clamp(2.3rem, 5.5vw, 4.4rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: normal;
+      margin-bottom: 1.25rem;
       color: #ffffff;
     }
 
-    .section-projects-inner {
-      max-width: 82rem;
-      margin: 0 auto;
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      color: var(--text-secondary);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      max-width: 720px;
+      margin: 0 auto 2.2rem;
+      color: #94a3b8;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+      border: 1px solid #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: #ffffff;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .section-header {
@@ -341,155 +289,816 @@
       margin-bottom: 3.5rem;
     }
 
-    .section-header > * + * {
-      margin-top: 1rem;
-    }
-
     .section-title {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      font-size: 2.35rem;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: normal;
+      margin-bottom: 0.6rem;
+      color: #ffffff;
     }
 
-    @media (min-width: 768px) { .section-title { font-size: 3.25rem; } }
-
-    .section-desc {
-      color: #9ca3af;
+    .section-subtitle {
+      color: var(--text-muted);
       font-size: 1.05rem;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.05em;
     }
 
-    /* Project Cards Grid */
+    /* Filter Chips */
+    .filter-chips {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.8rem;
+    }
+
+    .chip-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      padding: 0.45rem 1.1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip-btn:hover,
+    .chip-btn.active {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.8rem;
     }
 
     .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
-      border-radius: 0.75rem;
-      background-color: #0d0d0f;
-      border: 1px solid #222226;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      transition: all 0.3s ease;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .project-card:hover {
+      background: var(--card-hover);
+      border-color: var(--card-border-hover);
       transform: translateY(-4px);
-      border-color: #383842;
-      box-shadow: 0 12px 24px -4px rgba(0,0,0,0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
     }
 
-    .card-body {
-      padding: 1.75rem;
+    .project-card:hover::before {
+      opacity: 1;
     }
 
-    .card-body h3 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: 0.01em;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
-      line-height: 1.35;
-    }
-
-    .card-body-desc {
-      color: #9ca3af;
-      font-size: 0.92rem;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-      margin-bottom: 1.1rem;
-    }
-
-    .card-tags {
+    .card-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
     }
 
-    .card-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.02em;
+    .card-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       padding: 0.25rem 0.65rem;
       border-radius: 9999px;
-      background: #18181b;
-      border: 1px solid #27272a;
-      color: #a1a1aa;
-      font-weight: 400;
+      background: rgba(56, 189, 248, 0.12);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .card-badge.gold {
+      background: rgba(234, 179, 8, 0.12);
+      color: #fde047;
+      border-color: rgba(234, 179, 8, 0.28);
+    }
+
+    .card-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+    }
+
+    .project-bullets {
+      list-style: none;
+      margin-bottom: 1.4rem;
+      flex-grow: 1;
+    }
+
+    .project-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .project-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #94a3b8;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .tech-pill {
+      font-size: 0.73rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.05);
+      color: #d4d4d8;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 0.85rem;
-      border-top: 1px solid #222226;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .card-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.02em;
-      color: #d4d4d8;
-      transition: color 0.2s;
+      gap: 0.4rem;
+      transition: color 0.2s ease;
     }
 
-    .card-link:hover { color: #ffffff; }
-
-    .card-badge {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.65rem;
-      border-radius: 9999px;
-      font-weight: 500;
+    .card-link:hover {
+      color: #7dd3fc;
     }
 
-    .badge-gold { background: rgba(234,179,8,0.15); color: #fde047; border: 1px solid rgba(234,179,8,0.3); }
-    .badge-blue { background: rgba(56,189,248,0.12); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.25); }
-    .badge-green { background: rgba(52,211,153,0.12); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.25); }
-
-    /* ===== AWARD HERO CARD (with vlsi_dc_award.jpeg) ===== */
-    .award-hero-card {
-      background: #0d0d0f;
-      border: 1px solid #27272a;
-      border-radius: 1rem;
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: grid;
-      grid-template-columns: 1fr;
-      transition: border-color 0.25s ease, transform 0.25s ease;
+    /* Quote Banner */
+    .quote-banner {
+      background: #0f0f11;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4.5rem 0;
+      text-align: center;
     }
 
-    .award-hero-card:hover {
-      border-color: #3f3f46;
+    .quote-text {
+      font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      color: #f4f4f5;
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    /* Experience & Education */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .timeline-item:hover {
+      background: var(--card-hover);
+      border-color: var(--card-border-hover);
       transform: translateY(-2px);
     }
 
-    @media (min-width: 860px) {
-      .award-hero-card {
-        grid-template-columns: 440px 1fr;
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .timeline-role {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .timeline-company {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      color: #a1a1aa;
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #71717a;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: all 0.25s ease;
+    }
+
+    .skill-card:hover {
+      background: var(--card-hover);
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+
+    .skill-category {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: #d4d4d8;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Achievements & Contests */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .achievement-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: all 0.25s ease;
+    }
+
+    .achievement-card:hover {
+      background: var(--card-hover);
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+    }
+
+    .achievement-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .achievement-info h4 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .achievement-info p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--card-border-hover);
+      background: var(--card-hover);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .stat-sub {
+      font-size: 0.75rem;
+      color: #7dd3fc;
+      margin-top: 0.2rem;
+    }
+
+    /* FAQs Section (Sample Portfolio Style) */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .faq-sticky {
+      position: sticky;
+      top: 6rem;
+    }
+
+    .faq-sticky h2 {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .faq-sticky p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1.8rem 0;
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .faq-btn:hover {
+      color: #7dd3fc;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #18181b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background-color 0.2s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .faq-item.open .faq-content {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+    }
+
+    .faq-content p {
+      padding-bottom: 1.8rem;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #d4d4d8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .contact-item:hover {
+      color: #ffffff;
+    }
+
+    .contact-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-submit:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #ffffff;
+    }
+
+    /* Modal for Resume / Details */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #0d0d0f;
+      border: 1px solid #27272a;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 850px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid #27272a;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #a1a1aa;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    .modal-body {
+      padding: 1.8rem;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
+      .faq-sticky {
+        position: static;
+      }
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav.nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+      }
+      .brand-title {
+        margin-bottom: 0;
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #09090b;
+        border-bottom: 1px solid #27272a;
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 99;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu .nav-btn {
+        font-size: 1.2rem;
+        text-align: left;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* Standard comfortable typography */
+    body {
+      letter-spacing: 0.01em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.01em;
+    }
+
+    /* Award Hero Card */
+    .award-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 860px) {
+      .award-card {
+        grid-template-columns: 460px 1fr;
+      }
+    }
+
+    .award-card:hover {
+      background: var(--card-hover);
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
     }
 
     .award-img-wrap {
       position: relative;
-      background: #18181b;
+      background: #121214;
       min-height: 280px;
       overflow: hidden;
     }
@@ -502,11 +1111,11 @@
       transition: transform 0.5s ease;
     }
 
-    .award-hero-card:hover .award-img-wrap img {
-      transform: scale(1.03);
+    .award-card:hover .award-img-wrap img {
+      transform: scale(1.04);
     }
 
-    .award-img-badge {
+    .award-img-overlay {
       position: absolute;
       bottom: 0.75rem;
       left: 0.75rem;
@@ -517,81 +1126,62 @@
       color: #fde047;
       font-size: 0.75rem;
       font-weight: 500;
-      padding: 0.45rem 0.8rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 6px;
-      letter-spacing: 0.03em;
     }
 
-    .award-content {
+    .award-info {
       padding: 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    /* ===== TIMELINE / EXPERIENCE ===== */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .timeline-item {
-      background: #0d0d0f;
-      border: 1px solid #222226;
-      border-radius: 0.85rem;
-      padding: 2rem;
-      transition: all 0.25s ease;
-    }
-
-    .timeline-item:hover {
-      border-color: #383842;
-      transform: translateY(-2px);
-    }
-
-    /* ===== UNIFIED ABOUT SECTION ===== */
-    .about-unified-container {
-      max-width: 58rem;
+    /* Unified About Section */
+    .about-unified-wrap {
+      max-width: 920px;
       margin: 0 auto;
     }
 
     .about-profile-card {
-      background: #0d0d0f;
-      border: 1px solid #27272a;
-      border-radius: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
       padding: 2.25rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.25rem;
+      gap: 2rem;
       align-items: center;
-      text-align: left;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
     }
 
     @media (min-width: 768px) {
       .about-profile-card {
-        grid-template-columns: 240px 1fr;
-        padding: 2.75rem;
-        gap: 3rem;
+        grid-template-columns: 230px 1fr;
+        padding: 2.5rem;
+        gap: 2.75rem;
       }
     }
 
-    .about-avatar-wrap {
+    .about-profile-card:hover {
+      border-color: var(--card-border-hover);
+      background: var(--card-hover);
+    }
+
+    .about-avatar {
       position: relative;
-      width: 220px;
-      height: 220px;
+      width: 210px;
+      height: 210px;
       margin: 0 auto;
-      border-radius: 1rem;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid #3f3f46;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
       background: #18181b;
     }
 
-    .about-avatar-wrap img {
+    .about-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -599,23 +1189,21 @@
       transition: transform 0.4s ease;
     }
 
-    .about-avatar-wrap:hover img {
-      transform: scale(1.04);
+    .about-avatar:hover img {
+      transform: scale(1.05);
     }
 
-    .about-profile-info h3 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 2.1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+    .about-details h3 {
+      font-size: 2rem;
+      font-weight: 600;
       color: #ffffff;
       margin-bottom: 0.35rem;
     }
 
-    .about-profile-role {
-      color: #9ca3af;
+    .about-role-tag {
+      color: var(--text-secondary);
       font-size: 0.95rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -625,8 +1213,8 @@
     .about-facts-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      gap: 0.65rem;
+      margin-bottom: 1.4rem;
     }
 
     @media (min-width: 640px) {
@@ -635,1532 +1223,1042 @@
       }
     }
 
-    .about-fact-item {
+    .about-fact-box {
       font-size: 0.85rem;
       color: #a1a1aa;
       background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 0.65rem 0.9rem;
-      border-radius: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
-    .about-fact-item strong {
+    .about-fact-box strong {
       color: #ffffff;
       font-weight: 500;
     }
 
-    /* Single narrative flow (no fragmented chapter blocks) */
-    .about-story-single {
-      background: #0d0d0f;
-      border: 1px solid #222226;
-      border-radius: 1rem;
+    .about-narrative-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
       padding: 2.5rem;
-      text-align: left;
-      font-size: 1rem;
-      line-height: 1.85;
       color: #d4d4d8;
-      letter-spacing: 0.01em;
+      font-size: 1.02rem;
+      line-height: 1.85;
     }
 
-    .about-story-single p {
-      margin-bottom: 1.5rem;
+    .about-narrative-card p {
+      margin-bottom: 1.4rem;
     }
 
-    .about-story-single p:last-child {
+    .about-narrative-card p:last-child {
       margin-bottom: 0;
     }
 
-    .about-story-single strong {
+    .about-narrative-card strong {
       color: #ffffff;
       font-weight: 500;
     }
 
-    .story-quote-callout {
+    .about-quote-box {
       border-left: 3px solid #ffffff;
-      padding: 0.75rem 0 0.75rem 1.5rem;
-      margin: 1.75rem 0;
-      color: #ffffff !important;
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.45rem !important;
-      font-style: italic;
-      line-height: 1.5 !important;
-      letter-spacing: 0.02em;
-    }
-
-    .story-list {
-      list-style: none;
-      margin: 0.85rem 0;
-      padding-left: 0;
-    }
-
-    .story-list li {
-      position: relative;
-      padding-left: 1.35rem;
-      margin-bottom: 0.65rem;
-      color: #a1a1aa;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-    }
-
-    .story-list li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: #94a3b8;
-    }
-
-    .story-list li strong {
+      padding: 0.75rem 0 0.75rem 1.4rem;
+      margin: 1.6rem 0;
       color: #ffffff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      line-height: 1.5;
     }
 
-    /* Hobbies pills */
-    .hobbies-wrap {
+    .hobbies-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
+      margin-top: 1.5rem;
     }
 
-    .hobby-pill {
+    .hobby-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: #18181b;
-      border: 1px solid #27272a;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 0.45rem 0.95rem;
       border-radius: 9999px;
       font-size: 0.88rem;
       color: #e4e4e7;
-      letter-spacing: 0.02em;
     }
 
-    .btn-resume {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #ffffff;
-      color: #000000;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 0.65rem 1.6rem;
-      border-radius: 9999px;
-      transition: background-color 0.15s, transform 0.15s;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-resume:hover {
-      background-color: #e5e7eb;
-      transform: translateY(-1px);
-    }
-
-    /* Skills scrolling banner */
-    .skills-banner {
-      margin-top: 4rem;
+    /* Skills marquee in about */
+    .skills-marquee-wrap {
+      margin-top: 2.5rem;
       overflow: hidden;
-      border-top: 1px solid #27272a;
-      border-bottom: 1px solid #27272a;
-      padding: 1.25rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.1rem 0;
     }
 
-    .skills-track {
+    .skills-marquee-track {
       display: flex;
       gap: 2.5rem;
-      animation: scroll-skills 30s linear infinite;
+      animation: marquee-scroll 32s linear infinite;
       width: max-content;
     }
 
-    .skills-track span {
-      font-size: 0.95rem;
-      font-weight: 500;
+    .skills-marquee-track span {
+      font-size: 0.92rem;
+      font-family: 'JetBrains Mono', monospace;
       color: #71717a;
       white-space: nowrap;
       flex-shrink: 0;
-      letter-spacing: 0.04em;
     }
 
-    @keyframes scroll-skills {
+    @keyframes marquee-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* ===== QUOTE BANNER ===== */
-    .quote-section {
-      padding: 4.5rem 0;
-      background-color: #18181b;
-      color: #ffffff;
-      border-top: 1px solid #27272a;
-    }
-
-    .quote-section blockquote {
-      max-width: 50rem;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .quote-section blockquote p {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 500;
-      font-style: italic;
-      font-size: 1.35rem;
-      line-height: 1.65;
-      color: #f4f4f5;
-      letter-spacing: 0.02em;
-    }
-
-    @media (min-width: 768px) {
-      .quote-section { padding: 5.5rem 0; }
-      .quote-section blockquote p {
-        font-size: 2rem;
-        line-height: 1.5;
-      }
-    }
-
-    /* ===== FAQ SECTION ===== */
-    .faq-section {
-      padding: 6rem 0 8rem;
-      background-color: #000000;
-      color: #ffffff;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .faq-grid {
-        grid-template-columns: 1fr 2fr;
-        gap: 6rem;
-      }
-    }
-
-    .faq-header {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      font-size: 3.75rem;
-      line-height: 1;
-    }
-
-    @media (min-width: 768px) {
-      .faq-header { font-size: 4.75rem; }
-      .faq-left {
-        position: sticky;
-        top: 6rem;
-        align-self: start;
-      }
-    }
-
-    .faq-left p {
-      margin-top: 1rem;
-      color: #9ca3af;
-      font-size: 1.05rem;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid #27272a;
-    }
-
-    .faq-item:last-child {
-      border-bottom: 0;
-    }
-
-    .faq-question {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 0;
-      text-align: left;
-      font-size: 1.25rem;
-      font-weight: 300;
-      color: #ffffff;
-      background: none;
-      border: none;
-      cursor: pointer;
-      gap: 1rem;
-      letter-spacing: 0.01em;
-    }
-
-    @media (min-width: 768px) {
-      .faq-question { font-size: 1.45rem; }
-    }
-
-    .faq-question:focus { outline: none; }
-
-    .faq-icon-circle {
-      flex-shrink: 0;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 9999px;
-      background: #18181b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem;
-      color: #ffffff;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .faq-item.open .faq-icon-circle {
-      transform: rotate(45deg);
-      background: #ffffff;
-      color: #000000;
-    }
-
-    .faq-answer {
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-      max-height: 0;
-      opacity: 0;
-    }
-
-    .faq-item.open .faq-answer {
-      max-height: 600px;
-      opacity: 1;
-    }
-
-    .faq-answer p {
-      color: #9ca3af;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      padding-bottom: 1.5rem;
-      letter-spacing: 0.01em;
-    }
-
-    /* ===== CONTACT CTA ===== */
-    .contact-cta {
-      padding: 6rem 0 8rem;
-      background-color: #18181b;
-      color: #ffffff;
-      border-top: 1px solid #27272a;
-    }
-
-    .contact-cta-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .contact-cta-inner > * + * { margin-top: 2rem; }
-    .contact-cta-text > * + * { margin-top: 1rem; }
-
-    .contact-cta h2 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      font-size: 2rem;
-    }
-
-    @media (min-width: 640px) { .contact-cta h2 { font-size: 2.5rem; } }
-    @media (min-width: 768px) { .contact-cta h2 { font-size: 3.25rem; } }
-
-    .contact-cta .cta-subtitle {
-      max-width: 600px;
-      color: #9ca3af;
-      font-size: 1.125rem;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-white {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-      font-size: 0.875rem;
-      font-weight: 500;
-      height: 2.75rem;
-      background-color: #ffffff;
-      color: #000000;
-      border-radius: 9999px;
-      padding: 0 2rem;
-      transition: background-color 0.15s ease;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-white:hover {
-      background-color: #e5e7eb;
-    }
-
-    /* ===== CONTACT PAGE ===== */
-    .contact-section {
-      padding: 6rem 0 8rem;
-      background: #000;
-      color: #fff;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      max-width: 72rem;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .contact-grid {
-        grid-template-columns: 1fr 1.2fr;
-        gap: 4rem;
-      }
-    }
-
-    .contact-info h3 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-info > p {
-      color: #9ca3af;
-      font-size: 0.98rem;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-    }
-
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 1.25rem;
-      color: #d4d4d8;
-      font-size: 0.95rem;
-      letter-spacing: 0.01em;
-    }
-
-    .contact-info-item a { color: inherit; transition: color 0.15s; }
-    .contact-info-item a:hover { color: #ffffff; }
-
-    .contact-info-icon {
-      width: 1.25rem;
-      height: 1.25rem;
-      flex-shrink: 0;
-      color: #71717a;
-    }
-
-    .contact-form {
-      background: #0d0d0f;
-      border: 1px solid #27272a;
-      border-radius: 0.75rem;
-      padding: 2.25rem;
-    }
-
-    .form-group { margin-bottom: 1.25rem; }
-
-    .form-label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #d4d4d8;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.02em;
-    }
-
-    .form-input,
-    .form-textarea {
-      width: 100%;
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 0.5rem;
-      padding: 0.75rem 1rem;
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 0.9rem;
-      letter-spacing: 0.01em;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus,
-    .form-textarea:focus {
-      outline: none;
-      border-color: #ffffff;
-    }
-
-    .form-input::placeholder,
-    .form-textarea::placeholder {
-      color: #6b7280;
-    }
-
-    .form-textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      border-radius: 0.5rem;
-      padding: 0.8rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color 0.15s;
-      letter-spacing: 0.02em;
-    }
-
-    .form-submit:hover { background: #e5e7eb; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background-color: #000000;
-      color: #ffffff;
-      border-top: 1px solid #27272a;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 3rem 0;
-    }
-
-    .social-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .social-links a { color: #9ca3af; transition: color 0.15s ease; }
-    .social-links a:hover { color: #ffffff; }
-
-    .footer-copy {
-      text-align: center;
-      font-size: 0.875rem;
-      color: #6b7280;
-      letter-spacing: 0.02em;
-    }
-
-    /* ===== SCROLL ANIMATIONS ===== */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .animate-scale {
-      opacity: 0;
-      transform: scale(0.96);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .animate-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .stagger-1 { transition-delay: 0.1s; }
-    .stagger-2 { transition-delay: 0.2s; }
-    .stagger-3 { transition-delay: 0.3s; }
-    .stagger-4 { transition-delay: 0.4s; }
-    .stagger-5 { transition-delay: 0.5s; }
-
-    /* ===== SECTION VISIBILITY TOGGLE ===== */
-    .page-section {
-      display: none;
-    }
-
-    .page-section.active-page {
-      display: block;
-    }
   </style>
 </head>
 <body>
-  <div class="flex min-h-screen flex-col">
 
-    <!-- ===== HEADER ===== -->
-    <header id="site-header">
-      <div class="header-container">
-        <div class="header-brand">
-          <a href="#" class="font-serif" data-nav="home">Jhotheeshwar S S</a>
-        </div>
-        <nav class="desktop-nav">
-          <button class="nav-btn active" data-nav="home">Home<span class="nav-btn-underline"></span></button>
-          <button class="nav-btn" data-nav="project">Projects<span class="nav-btn-underline"></span></button>
-          <button class="nav-btn" data-nav="experience">Experience<span class="nav-btn-underline"></span></button>
-          <button class="nav-btn" data-nav="achievements">Achievements<span class="nav-btn-underline"></span></button>
-          <button class="nav-btn" data-nav="about">About<span class="nav-btn-underline"></span></button>
-          <button class="nav-btn" data-nav="contact">Contact<span class="nav-btn-underline"></span></button>
+  <!-- Header Navigation (Sleek minimalist style) -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#home" class="brand-title font-serif">S S JHOTHEESHWAR</a>
+        
+        <nav class="nav-links">
+          <a href="#home" class="nav-btn active">Home</a>
+          <a href="#projects" class="nav-btn">Projects</a>
+          <a href="#experience" class="nav-btn">Experience</a>
+          <a href="#skills" class="nav-btn">Skills</a>
+          <a href="#achievements" class="nav-btn">Achievements</a>
+          <a href="#about" class="nav-btn">About</a>
+          <a href="#faq" class="nav-btn">FAQs</a>
+          <a href="#contact" class="nav-btn">Contact</a>
+          <a href="resume.pdf" target="_blank" download class="resume-nav-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
         </nav>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-          <div class="hamburger-box">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </div>
+
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
+    </div>
 
-      <!-- Mobile Drawer -->
-      <div class="mobile-drawer" id="mobileDrawer">
-        <div class="mobile-drawer-inner container">
-          <button class="nav-btn active" data-nav="home">Home</button>
-          <button class="nav-btn" data-nav="project">Projects</button>
-          <button class="nav-btn" data-nav="experience">Experience</button>
-          <button class="nav-btn" data-nav="achievements">Achievements</button>
-          <button class="nav-btn" data-nav="about">About</button>
-          <button class="nav-btn" data-nav="contact">Contact</button>
-        </div>
-      </div>
-    </header>
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="nav-btn mobile-nav-link">Home</a>
+      <a href="#projects" class="nav-btn mobile-nav-link">Projects</a>
+      <a href="#experience" class="nav-btn mobile-nav-link">Experience</a>
+      <a href="#skills" class="nav-btn mobile-nav-link">Skills</a>
+      <a href="#achievements" class="nav-btn mobile-nav-link">Achievements</a>
+      <a href="#about" class="nav-btn mobile-nav-link">About</a>
+      <a href="#faq" class="nav-btn mobile-nav-link">FAQs</a>
+      <a href="#contact" class="nav-btn mobile-nav-link">Contact</a>
+      <a href="resume.pdf" target="_blank" download class="resume-nav-pill" style="align-self: flex-start; margin-top: 0.5rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV / Resume
+      </a>
+    </div>
+  </header>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="flex-1">
-      <div class="flex flex-col min-h-screen">
-
-        <!-- ==================== HOME PAGE ==================== -->
-        <div class="page-section active-page" id="page-home">
-
-          <!-- Hero -->
-          <section class="hero" id="sec-home">
-            <div class="container hero-inner">
-              <div class="hero-content">
-                <h1 class="hero-title font-serif animate-on-scroll">Hardware powers AI from Silicon to the Edge</h1>
-                <div class="hero-subtitle animate-on-scroll stagger-1">Exploring Edge AI, FPGA Acceleration &amp; Embedded Systems</div>
-                <p class="hero-desc animate-on-scroll stagger-2">BUILDING INTELLIGENT, DETERMINISTIC AND PRIVACY-PRESERVING HARDWARE SOLUTIONS</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Featured Award Banner on Home (VLSID Award Image) -->
-          <section class="section-projects" style="padding-top:2rem;padding-bottom:4rem;">
-            <div class="container">
-              <div class="award-hero-card animate-on-scroll">
-                <div class="award-img-wrap">
-                  <img src="vlsi_dc_award.jpeg" alt="Winner of VLSID 2026 Design Contest Award Ceremony" />
-                  <div class="award-img-badge">🏆 Winner Award · 39th International VLSI Design Conference (VLSID 2026)</div>
-                </div>
-                <div class="award-content">
-                  <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
-                    <span class="card-badge badge-gold">Design Contest 1st Place</span>
-                    <span style="font-size:0.8rem;color:#71717a;">JAN 2026</span>
-                  </div>
-                  <h3 class="font-serif" style="font-size:1.85rem;color:#ffffff;margin-bottom:0.75rem;line-height:1.3;">Winner &mdash; VLSID 2026 International Design Contest</h3>
-                  <p style="color:#a1a1aa;font-size:0.95rem;line-height:1.75;margin-bottom:1.25rem;">
-                    Our team won 1st Place in the prestigious Design Contest at the <strong>39th International Conference on VLSI Design (VLSID 2026)</strong> for engineering <strong>LATTEYES</strong>: an FPGA-based 4-mode Edge-AI surveillance system on the <strong>Lattice CertusPro-NX FPGA</strong>, achieving 92% detection accuracy with an on-chip MobileNetV2-SSD CNN accelerator.
-                  </p>
-                  <div class="card-tags">
-                    <span class="card-tag">Lattice CertusPro-NX FPGA</span>
-                    <span class="card-tag">MobileNetV2-SSD</span>
-                    <span class="card-tag">AXI Interface</span>
-                    <span class="card-tag">HM0360 Camera</span>
-                  </div>
-                  <div>
-                    <a href="#" data-nav="achievements" class="card-link" style="color:#fde047;font-weight:500;">
-                      <span>View All Honors &amp; Awards &rarr;</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Featured Projects Grid -->
-          <section class="section-projects" id="sec-project" style="padding-top:2rem;">
-            <div class="container">
-              <div class="section-projects-inner">
-                <div class="section-header animate-on-scroll">
-                  <h2 class="section-title font-serif">Featured Projects</h2>
-                  <p class="section-desc">Hardware, Edge-AI, and Deterministic Systems</p>
-                </div>
-
-                <div class="projects-grid">
-                  <!-- Project 1: LATTEYES -->
-                  <div class="project-card animate-on-scroll stagger-1">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-gold">VLSID 2026 Winner</span>
-                        <span style="font-size:0.75rem;color:#71717a;">JAN 2026</span>
-                      </div>
-                      <h3 class="font-serif">LATTEYES: Multi-Purpose Edge-AI Surveillance System</h3>
-                      <p class="card-body-desc">Designed a 4-mode Edge-AI surveillance system (Intruder, Wildlife, Industrial Fire, Border/Drone) on Lattice CertusPro-NX FPGA, achieving 92% object detection accuracy with MobileNetV2-SSD on a CNN accelerator. Integrated HM0360 camera, dual-PIR sensors, and AXI Interface for real-time bounding box rendering without cloud dependency.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">CertusPro-NX FPGA</span>
-                        <span class="card-tag">MobileNetV2-SSD</span>
-                        <span class="card-tag">Verilog RTL</span>
-                        <span class="card-tag">AXI</span>
-                        <span class="card-tag">Radiant</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">92% Accuracy · CNN Accelerator</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 2: Vision-x -->
-                  <div class="project-card animate-on-scroll stagger-2">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-gold">TRON Contest Finalist</span>
-                        <span style="font-size:0.75rem;color:#71717a;">JUN 2026</span>
-                      </div>
-                      <h3 class="font-serif">Vision-x: Real-Time Vision AI Object Detection</h3>
-                      <p class="card-body-desc">Engineered on Renesas RA8P1 using μT-Kernel 3.0 (TRON RTOS) with a multithreaded architecture for concurrent camera capture, NPU inference, and LCD rendering with deterministic real-time performance. Integrated and optimized an INT8 YOLOX model on the Arm Ethos-U55 NPU with CPU–NPU shared-memory synchronization.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">Renesas RA8P1</span>
-                        <span class="card-tag">μT-Kernel 3.0</span>
-                        <span class="card-tag">Arm Ethos-U55</span>
-                        <span class="card-tag">YOLOX INT8</span>
-                        <span class="card-tag">C</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">Real-Time RTOS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 3: SafeLink -->
-                  <div class="project-card animate-on-scroll stagger-3">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-blue">Hardware Cryptography</span>
-                        <span style="font-size:0.75rem;color:#71717a;">FEB 2026</span>
-                      </div>
-                      <h3 class="font-serif">SafeLink: Secure Real-Time Sensor SPN Encryption</h3>
-                      <p class="card-body-desc">Established a hardware-based secure sensor communication system on Zynq-7000 FPGA (ZedBoard) using pure Verilog RTL, achieving deterministic real-time operation without CPU involvement. Designed an 8-bit Substitution-Permutation Network (SPN) cipher engine with XOR key mixing, 4-bit S-box, permutation layer, and UART transmission.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">ZedBoard Zynq-7000</span>
-                        <span class="card-tag">Verilog RTL</span>
-                        <span class="card-tag">SPN Cipher</span>
-                        <span class="card-tag">Vivado</span>
-                        <span class="card-tag">UART</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">Zero CPU Overhead</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 4: PiAssistant -->
-                  <div class="project-card animate-on-scroll stagger-4">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-blue">Offline LLM &amp; Voice AI</span>
-                        <span style="font-size:0.75rem;color:#71717a;">FEB 2026</span>
-                      </div>
-                      <h3 class="font-serif">PiAssistant: Offline Hindi Voice AI System</h3>
-                      <p class="card-body-desc">Developed a completely offline, privacy-preserving Hindi voice assistant on Raspberry Pi 4 integrating local ASR, LLM inference, and TTS. Orchestrated Whisper, Ollama (Gemma), and Piper into a low-latency, real-time voice pipeline optimized for embedded edge execution with zero cloud dependence.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">Raspberry Pi 4</span>
-                        <span class="card-tag">Whisper</span>
-                        <span class="card-tag">Ollama Gemma</span>
-                        <span class="card-tag">Piper TTS</span>
-                        <span class="card-tag">Python</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">100% On-Device</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style="text-align:center;margin-top:2.5rem;">
-                  <a href="#" data-nav="project" class="btn-white">View All Projects &amp; Architecture</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Quote -->
-          <section class="quote-section">
-            <div class="container">
-              <blockquote class="animate-scale">
-                <p>&ldquo;Deterministic performance isn&rsquo;t just a requirement&hairsp;&mdash;&hairsp;it is the art of precision in silicon, RTL, and real-time execution.&rdquo;</p>
-              </blockquote>
-            </div>
-          </section>
-
-          <!-- FAQs -->
-          <section class="faq-section" id="sec-faq">
-            <div class="container">
-              <div class="faq-grid">
-                <div class="faq-left animate-on-scroll">
-                  <h2 class="faq-header font-serif">FAQs</h2>
-                  <p>Common questions regarding Edge AI &amp; embedded engineering</p>
-                </div>
-                <div class="faq-list">
-                  <div class="faq-item animate-on-scroll stagger-1">
-                    <button class="faq-question" aria-expanded="false">
-                      <span>What is an Edge-AI hardware accelerator?</span>
-                      <span class="faq-icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                      </span>
-                    </button>
-                    <div class="faq-answer">
-                      <p>An Edge-AI accelerator (such as an FPGA CNN engine or dedicated NPU like the Arm Ethos-U55) executes neural network tensor computations directly on localized hardware rather than streaming data to remote clouds. This drastically minimizes latency, cuts power consumption, guarantees deterministic timing, and preserves data privacy by processing feeds on-device.</p>
-                    </div>
-                  </div>
-
-                  <div class="faq-item animate-on-scroll stagger-2">
-                    <button class="faq-question" aria-expanded="false">
-                      <span>Why use an RTOS like μT-Kernel 3.0 on Renesas RA8P1?</span>
-                      <span class="faq-icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                      </span>
-                    </button>
-                    <div class="faq-answer">
-                      <p>μT-Kernel 3.0 is a standardized real-time operating system from the TRON Project. In high-speed vision systems, tasks like camera DMA frame capture, NPU inference, and LCD rendering must run concurrently with strict deterministic deadlines. An RTOS provides prioritized preemption, semaphore synchronization, and predictable latency that bare-metal code cannot cleanly manage.</p>
-                    </div>
-                  </div>
-
-                  <div class="faq-item animate-on-scroll stagger-3">
-                    <button class="faq-question" aria-expanded="false">
-                      <span>How does FPGA-based SPN encryption outperform software ciphers?</span>
-                      <span class="faq-icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                      </span>
-                    </button>
-                    <div class="faq-answer">
-                      <p>Software encryption consumes significant CPU cycles and suffers from variable execution time. Implementing an 8-bit Substitution-Permutation Network in Verilog RTL transforms the cipher rounds into pure combinational logic and registers, executing in constant clock cycles with zero host CPU load.</p>
-                    </div>
-                  </div>
-
-                  <div class="faq-item animate-on-scroll stagger-4">
-                    <button class="faq-question" aria-expanded="false">
-                      <span>How do you handle INT8 quantization for NPU deployment?</span>
-                      <span class="faq-icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                      </span>
-                    </button>
-                    <div class="faq-answer">
-                      <p>Floating-point 32-bit models require excessive memory bandwidth and silicon area. Using Post-Training Quantization (PTQ) or Quantization-Aware Training (QAT), weights and activations are mapped to 8-bit integers with minimal accuracy degradation. Dedicated NPU MAC units process INT8 vectors at 4x higher throughput and significantly reduced milliwatt budgets.</p>
-                    </div>
-                  </div>
-
-                  <div class="faq-item animate-on-scroll stagger-5">
-                    <button class="faq-question" aria-expanded="false">
-                      <span>Can your projects operate completely air-gapped without internet?</span>
-                      <span class="faq-icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                      </span>
-                    </button>
-                    <div class="faq-answer">
-                      <p>Yes. All edge projects &mdash; LATTEYES (Lattice CertusPro-NX FPGA), Vision-x (Renesas RA8P1), SafeLink (ZedBoard Zynq-7000), and PiAssistant (offline Whisper + Gemma LLM) &mdash; are engineered to run completely autonomous, air-gapped, and independent of internet connectivity or cloud infrastructure.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Contact CTA -->
-          <section class="contact-cta">
-            <div class="container">
-              <div class="contact-cta-inner">
-                <div class="contact-cta-text">
-                  <h2 class="font-serif animate-on-scroll">Have a question or planning a project?</h2>
-                  <p class="cta-subtitle animate-on-scroll stagger-1">Let&rsquo;s make it happen together</p>
-                </div>
-                <div class="animate-on-scroll stagger-2">
-                  <a class="btn-white" href="#" data-nav="contact">Get in Touch</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-        </div><!-- end page-home -->
-
-        <!-- ==================== PROJECTS PAGE ==================== -->
-        <div class="page-section" id="page-project">
-          <section class="section-projects" style="padding-top:8rem;">
-            <div class="container">
-              <div class="section-projects-inner">
-                <div class="section-header animate-on-scroll">
-                  <h2 class="section-title font-serif">Engineering Projects</h2>
-                  <p class="section-desc">Silicon prototyping, Edge AI accelerators, and deterministic RTOS</p>
-                </div>
-
-                <div class="projects-grid">
-                  <!-- Project 1: LATTEYES -->
-                  <div class="project-card animate-on-scroll">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-gold">VLSID 2026 Winner (92% Acc)</span>
-                        <span style="font-size:0.75rem;color:#71717a;">JAN 2026</span>
-                      </div>
-                      <h3 class="font-serif">LATTEYES: Multi-Purpose Edge-AI Surveillance System</h3>
-                      <p class="card-body-desc">Designed a 4-mode Edge-AI surveillance system (Intruder, Wildlife, Industrial Fire, Border/Drone) on Lattice CertusPro-NX FPGA, achieving 92% object detection accuracy with MobileNetV2-SSD on a CNN accelerator. Integrated HM0360 camera, dual-PIR sensors, and AXI Interface for real-time bounding box rendering without cloud dependency.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">CertusPro-NX FPGA</span>
-                        <span class="card-tag">MobileNetV2-SSD</span>
-                        <span class="card-tag">Verilog RTL</span>
-                        <span class="card-tag">AXI</span>
-                        <span class="card-tag">Radiant</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">92% Accuracy · CNN Accelerator</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 2: Vision-x -->
-                  <div class="project-card animate-on-scroll">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-gold">TRON Contest Finalist</span>
-                        <span style="font-size:0.75rem;color:#71717a;">JUN 2026</span>
-                      </div>
-                      <h3 class="font-serif">Vision-x: Real-Time Vision AI Object Detection</h3>
-                      <p class="card-body-desc">Engineered on Renesas RA8P1 using μT-Kernel 3.0 (TRON RTOS) with a multithreaded architecture for concurrent camera capture, NPU inference, and LCD rendering with deterministic real-time performance. Integrated and optimized an INT8 YOLOX model on the Arm Ethos-U55 NPU with CPU–NPU shared-memory synchronization.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">Renesas RA8P1</span>
-                        <span class="card-tag">μT-Kernel 3.0</span>
-                        <span class="card-tag">Arm Ethos-U55</span>
-                        <span class="card-tag">YOLOX INT8</span>
-                        <span class="card-tag">C</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">Real-Time RTOS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 3: SafeLink -->
-                  <div class="project-card animate-on-scroll">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-blue">Hardware Security</span>
-                        <span style="font-size:0.75rem;color:#71717a;">FEB 2026</span>
-                      </div>
-                      <h3 class="font-serif">SafeLink: Secure Real-Time Sensor SPN Encryption</h3>
-                      <p class="card-body-desc">Established a hardware-based secure sensor communication system on Zynq-7000 FPGA (ZedBoard) using pure Verilog RTL, achieving deterministic real-time operation without CPU involvement. Designed an 8-bit Substitution-Permutation Network (SPN) cipher engine with XOR key mixing, 4-bit S-box, permutation layer, and UART transmission.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">ZedBoard Zynq-7000</span>
-                        <span class="card-tag">Verilog RTL</span>
-                        <span class="card-tag">SPN Cipher</span>
-                        <span class="card-tag">Vivado</span>
-                        <span class="card-tag">UART</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">Zero CPU Overhead</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 4: PiAssistant -->
-                  <div class="project-card animate-on-scroll">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-blue">Offline Voice AI</span>
-                        <span style="font-size:0.75rem;color:#71717a;">FEB 2026</span>
-                      </div>
-                      <h3 class="font-serif">PiAssistant: Offline Hindi Voice AI System</h3>
-                      <p class="card-body-desc">Developed a completely offline, privacy-preserving Hindi voice assistant on Raspberry Pi 4 integrating local ASR, LLM inference, and TTS. Orchestrated Whisper, Ollama (Gemma), and Piper into a low-latency, real-time voice pipeline optimized for embedded edge execution with zero cloud dependence.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">Raspberry Pi 4</span>
-                        <span class="card-tag">Whisper</span>
-                        <span class="card-tag">Ollama Gemma</span>
-                        <span class="card-tag">Piper TTS</span>
-                        <span class="card-tag">Python</span>
-                      </div>
-                      <div class="card-footer">
-                        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener" class="card-link">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                          View on GitHub
-                        </a>
-                        <span style="font-size:0.75rem;color:#71717a;">100% On-Device</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Project 5: IMD Platform -->
-                  <div class="project-card animate-on-scroll" style="grid-column: 1 / -1;">
-                    <div class="card-body">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                        <span class="card-badge badge-green">Deployed at IMD Chennai</span>
-                        <span style="font-size:0.75rem;color:#71717a;">MAY – JUN 2026</span>
-                      </div>
-                      <h3 class="font-serif">AWS–ARG Automated Quality Control &amp; Health Monitoring Platform</h3>
-                      <p class="card-body-desc">Developed a Python-based platform for the India Meteorological Department (IMD) used daily by the Regional Meteorological Centre (RMC), Chennai. Automates sensor validation, fault analysis, GSM-based telemetry parsing, and operational reporting compliant with World Meteorological Organization (WMO) standards.</p>
-                      <div class="card-tags">
-                        <span class="card-tag">Python</span>
-                        <span class="card-tag">AWS / ARG</span>
-                        <span class="card-tag">GSM Telemetry</span>
-                        <span class="card-tag">Quality Control</span>
-                        <span class="card-tag">Daily Production Deployment</span>
-                        <span class="card-tag">WMO Standards</span>
-                      </div>
-                      <div class="card-footer">
-                        <span class="card-link" style="color:#6ee7b7;">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                          In Daily Production at RMC Chennai
-                        </span>
-                        <span style="font-size:0.75rem;color:#71717a;">IMD RMC Chennai</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </section>
+  <!-- Hero Section -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          <span>EDGE AI • EMBEDDED SYSTEMS • VLSI • RTOS</span>
         </div>
 
-        <!-- ==================== EXPERIENCE PAGE (SEPARATE SECTION) ==================== -->
-        <div class="page-section" id="page-experience">
-          <section class="section-projects" style="padding-top:8rem;">
-            <div class="container">
-              <div class="section-header animate-on-scroll">
-                <h2 class="section-title font-serif">Work Experience</h2>
-                <p class="section-desc">Industry internships, research, and production deployments</p>
-              </div>
+        <h1 class="hero-title font-serif">
+          Hardware powers AI from Silicon to the Edge
+        </h1>
 
-              <div class="timeline">
-                <!-- Switch Mobility -->
-                <div class="timeline-item animate-on-scroll">
-                  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-                    <div>
-                      <span class="card-badge badge-blue" style="margin-bottom:0.5rem;display:inline-block;">Automotive Embedded Systems</span>
-                      <h3 class="font-serif" style="font-size:1.65rem;color:#ffffff;line-height:1.3;">Switch Mobility (Ashok Leyland)</h3>
-                      <p style="color:#a1a1aa;font-size:0.95rem;">Intern &mdash; EV Subsystems &amp; CAN Communication</p>
-                    </div>
-                    <span style="font-size:0.8rem;color:#71717a;background:#18181b;padding:0.25rem 0.65rem;border-radius:4px;border:1px solid #27272a;">MAY 2025 &ndash; JUN 2025 · Ennore, Chennai</span>
-                  </div>
-                  <ul class="story-list" style="margin-top:1rem;">
-                    <li>Investigated automotive <strong>CAN communication protocols</strong> and inter-ECU interaction, gaining a comprehensive understanding of how commercial EV subsystems exchange data for vehicle control, real-time monitoring, and diagnostics.</li>
-                    <li>Acquired hands-on practical knowledge of critical EV sensors including <strong>torque sensors</strong>, <strong>steering angle sensors</strong>, and <strong>inductive proximity sensors</strong> deployed across operational electric drivetrains.</li>
-                  </ul>
-                  <div class="card-tags" style="margin-top:1.25rem;margin-bottom:0;">
-                    <span class="card-tag">CAN Bus</span>
-                    <span class="card-tag">ECU Diagnostics</span>
-                    <span class="card-tag">EV Sensors</span>
-                    <span class="card-tag">Electric Vehicles</span>
-                  </div>
-                </div>
+        <p class="hero-subtitle">
+          B.E. Electronics Engineering (VLSI Design and Technology) • Chennai Institute of Technology
+        </p>
 
-                <!-- CIT VLSI CoE -->
-                <div class="timeline-item animate-on-scroll">
-                  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-                    <div>
-                      <span class="card-badge badge-gold" style="margin-bottom:0.5rem;display:inline-block;">Digital IC Design &amp; Verification</span>
-                      <h3 class="font-serif" style="font-size:1.65rem;color:#ffffff;line-height:1.3;">VLSI Centre of Excellence (CoE)</h3>
-                      <p style="color:#a1a1aa;font-size:0.95rem;">VLSI Intern &mdash; Chennai Institute of Technology</p>
-                    </div>
-                    <span style="font-size:0.8rem;color:#71717a;background:#18181b;padding:0.25rem 0.65rem;border-radius:4px;border:1px solid #27272a;">2025 · Chennai, India</span>
-                  </div>
-                  <ul class="story-list" style="margin-top:1rem;">
-                    <li>Developed and verified digital logic architectures in <strong>Verilog RTL</strong>, implementing behavioral and gate-level simulations for custom hardware modules.</li>
-                    <li>Conducted functional verification, timing analysis, and synthesis workflows utilizing industry-standard EDA environments including <strong>Cadence</strong>, <strong>Synopsys</strong>, and <strong>Xilinx Vivado</strong>.</li>
-                  </ul>
-                  <div class="card-tags" style="margin-top:1.25rem;margin-bottom:0;">
-                    <span class="card-tag">Verilog RTL</span>
-                    <span class="card-tag">Cadence</span>
-                    <span class="card-tag">Synopsys</span>
-                    <span class="card-tag">Vivado</span>
-                    <span class="card-tag">Digital Verification</span>
-                  </div>
-                </div>
+        <p class="hero-desc">
+          Winner of <strong>VLSID 2026 Design Contest</strong> and <strong>TRON Programming Contest 2026 Finalist</strong>. Specialized in FPGA acceleration, deterministic real-time operating systems (μT-Kernel 3.0), hardware encryption, and on-device AI inference.
+        </p>
 
-                <!-- IMD Chennai -->
-                <div class="timeline-item animate-on-scroll">
-                  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-                    <div>
-                      <span class="card-badge badge-green" style="margin-bottom:0.5rem;display:inline-block;">Production Software &amp; Telemetry</span>
-                      <h3 class="font-serif" style="font-size:1.65rem;color:#ffffff;line-height:1.3;">India Meteorological Department (IMD)</h3>
-                      <p style="color:#a1a1aa;font-size:0.95rem;">Engineering Intern &mdash; Regional Meteorological Centre (RMC), Chennai</p>
-                    </div>
-                    <span style="font-size:0.8rem;color:#71717a;background:#18181b;padding:0.25rem 0.65rem;border-radius:4px;border:1px solid #27272a;">MAY 2026 &ndash; JUN 2026 · Chennai, India</span>
-                  </div>
-                  <ul class="story-list" style="margin-top:1rem;">
-                    <li>Acquired practical expertise in <strong>Automatic Weather Stations (AWS)</strong>, <strong>Automatic Rain Gauges (ARG)</strong>, meteorological data loggers, GSM telemetry, and World Meteorological Organization (WMO) observational compliance.</li>
-                    <li>Engineered a Python-based <strong>AWS–ARG Quality Control &amp; Health Monitoring platform</strong>, currently used daily by meteorologists at RMC Chennai for automated sensor validation, fault analysis, and operational reporting.</li>
-                  </ul>
-                  <div class="card-tags" style="margin-top:1.25rem;margin-bottom:0;">
-                    <span class="card-tag">Python</span>
-                    <span class="card-tag">AWS / ARG</span>
-                    <span class="card-tag">GSM Telemetry</span>
-                    <span class="card-tag">Daily Production Deployment</span>
-                    <span class="card-tag">WMO Standards</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <!-- ==================== ACHIEVEMENTS PAGE (SEPARATE SECTION) ==================== -->
-        <div class="page-section" id="page-achievements">
-          <section class="section-projects" style="padding-top:8rem;">
-            <div class="container">
-              <div class="section-header animate-on-scroll">
-                <h2 class="section-title font-serif">Honors &amp; Achievements</h2>
-                <p class="section-desc">Competitive hackathons, international conferences, and technical milestones</p>
-              </div>
-
-              <!-- Award Highlight with vlsi_dc_award.jpeg -->
-              <div class="award-hero-card animate-on-scroll">
-                <div class="award-img-wrap">
-                  <img src="vlsi_dc_award.jpeg" alt="VLSID 2026 Design Contest Award Ceremony" />
-                  <div class="award-img-badge">🏆 Winner Award · VLSID 2026 International Conference</div>
-                </div>
-                <div class="award-content">
-                  <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
-                    <span class="card-badge badge-gold">Design Contest 1st Place</span>
-                    <span style="font-size:0.8rem;color:#71717a;">JAN 2026</span>
-                  </div>
-                  <h3 class="font-serif" style="font-size:1.85rem;color:#ffffff;margin-bottom:0.75rem;line-height:1.3;">Winner &mdash; 39th International Conference on VLSI Design (VLSID 2026)</h3>
-                  <p style="color:#a1a1aa;font-size:0.95rem;line-height:1.75;margin-bottom:1.25rem;">
-                    Awarded 1st place in the prestigious Design Contest at the <strong>VLSID 2026 International Conference</strong> for engineering <strong>LATTEYES</strong>: a 4-mode Edge-AI surveillance system on the <strong>Lattice CertusPro-NX FPGA</strong>. The system achieved <strong>92% detection accuracy</strong> utilizing an on-chip MobileNetV2-SSD CNN accelerator, HM0360 camera, dual-PIR sensors, and AXI streaming interface for real-time cloud-independent operation.
-                  </p>
-                  <div class="card-tags">
-                    <span class="card-tag">Lattice CertusPro-NX</span>
-                    <span class="card-tag">CNN Accelerator</span>
-                    <span class="card-tag">Verilog RTL</span>
-                    <span class="card-tag">VLSID 2026 Winner</span>
-                    <span class="card-tag">Edge AI</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Other Honors Grid -->
-              <div class="projects-grid">
-                <div class="project-card animate-on-scroll">
-                  <div class="card-body">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                      <span class="card-badge badge-gold">Finalist</span>
-                      <span style="font-size:0.75rem;color:#71717a;">JUN 2026</span>
-                    </div>
-                    <h3 class="font-serif">TRON Programming Contest 2026 &mdash; Finalist</h3>
-                    <p class="card-body-desc">Selected as Finalist for developing <strong>Vision-x</strong>: a real-time vision AI application on the <strong>Renesas RA8P1</strong> microcontroller utilizing <strong>&mu;T-Kernel 3.0 (TRON RTOS)</strong> and the <strong>Arm Ethos-U55 NPU</strong> for deterministic real-time multi-threaded object detection.</p>
-                    <div class="card-tags">
-                      <span class="card-tag">Renesas RA8P1</span>
-                      <span class="card-tag">&mu;T-Kernel 3.0</span>
-                      <span class="card-tag">Arm Ethos-U55</span>
-                      <span class="card-tag">TRON RTOS</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                  <div class="card-body">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                      <span class="card-badge badge-blue">Finalist</span>
-                      <span style="font-size:0.75rem;color:#71717a;">DEC 2025</span>
-                    </div>
-                    <h3 class="font-serif">IIT Bombay &mdash; Safetronics Finalist</h3>
-                    <p class="card-body-desc">Selected as Finalist in the national-level Safetronics competition conducted by <strong>IIT Bombay</strong>, competing in the design and architecture of safety-critical automotive embedded systems and fault-tolerant communications.</p>
-                    <div class="card-tags">
-                      <span class="card-tag">IIT Bombay</span>
-                      <span class="card-tag">Safety-Critical Embedded</span>
-                      <span class="card-tag">Fault Tolerance</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="project-card animate-on-scroll" style="grid-column: 1 / -1;">
-                  <div class="card-body">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                      <span class="card-badge badge-green">Certifications</span>
-                      <span style="font-size:0.75rem;color:#71717a;">2024 &ndash; 2026</span>
-                    </div>
-                    <h3 class="font-serif">NPTEL &amp; Industry Certifications</h3>
-                    <p class="card-body-desc">Earned certifications in <strong>Introduction to Industry 4.0</strong>, <strong>System Design through Verilog</strong>, and <strong>Sensors and Actuators</strong> from NPTEL. Completed the <strong>EduSkills Microchip Embedded System Developer Virtual Internship</strong>.</p>
-                    <div class="card-tags">
-                      <span class="card-tag">NPTEL Industry 4.0</span>
-                      <span class="card-tag">Verilog System Design</span>
-                      <span class="card-tag">Sensors &amp; Actuators</span>
-                      <span class="card-tag">EduSkills Microchip</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Problem Solving Stats -->
-              <div style="margin-top:3.5rem;">
-                <div class="section-header animate-on-scroll" style="margin-bottom:2rem;">
-                  <h3 class="font-serif" style="font-size:2rem;">Algorithmic Problem Solving</h3>
-                  <p class="section-desc">Competitive programming milestones across global platforms</p>
-                </div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:820px;margin:0 auto;">
-                  <div class="project-card animate-on-scroll" style="text-align:center;padding:1.75rem 1rem;">
-                    <div style="font-size:2.5rem;font-weight:700;color:#ffffff;font-family:'Instrument Serif',serif;">191</div>
-                    <div style="font-size:0.85rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;margin-top:0.25rem;">LeetCode Solved</div>
-                    <div style="font-size:0.75rem;color:#38bdf8;margin-top:0.25rem;">Rating: 1,281</div>
-                  </div>
-                  <div class="project-card animate-on-scroll" style="text-align:center;padding:1.75rem 1rem;">
-                    <div style="font-size:2.5rem;font-weight:700;color:#ffffff;font-family:'Instrument Serif',serif;">51</div>
-                    <div style="font-size:0.85rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;margin-top:0.25rem;">CodeChef Solved</div>
-                    <div style="font-size:0.75rem;color:#38bdf8;margin-top:0.25rem;">Rating: 785</div>
-                  </div>
-                  <div class="project-card animate-on-scroll" style="text-align:center;padding:1.75rem 1rem;">
-                    <div style="font-size:2.5rem;font-weight:700;color:#ffffff;font-family:'Instrument Serif',serif;">138</div>
-                    <div style="font-size:0.85rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;margin-top:0.25rem;">SkillRack Solved</div>
-                    <div style="font-size:0.75rem;color:#38bdf8;margin-top:0.25rem;">Algorithmic Challenges</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </section>
-        </div>
-
-        <!-- ==================== ABOUT PAGE (SINGLE UNIFIED SECTION) ==================== -->
-        <div class="page-section" id="page-about">
-          <section class="section-projects" style="padding-top:8rem;">
-            <div class="container">
-              <div class="section-header animate-on-scroll">
-                <h2 class="section-title font-serif">About Me</h2>
-                <p class="section-desc">The journey of an aspiring chip designer and edge AI engineer</p>
-              </div>
-
-              <!-- Unified About Container -->
-              <div class="about-unified-container">
-                <div class="about-profile-card animate-on-scroll">
-                  <div class="about-avatar-wrap">
-                    <img src="jho.jpeg" alt="Jhotheeshwar S S" />
-                  </div>
-                  <div class="about-profile-info">
-                    <h3 class="font-serif">Jhotheeshwar S S</h3>
-                    <div class="about-profile-role">
-                      <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
-                      <span>3rd Year VLSI Undergraduate · Chennai Institute of Technology</span>
-                    </div>
-
-                    <div class="about-facts-grid">
-                      <div class="about-fact-item">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                        <div><strong>Degree:</strong> B.E. VLSI (CIT Chennai) · CGPA 8.4</div>
-                      </div>
-                      <div class="about-fact-item">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                        <div><strong>Schooling:</strong> Kendriya Vidyalaya (1st–12th)</div>
-                      </div>
-                      <div class="about-fact-item">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <div><strong>Core Focus:</strong> VLSI &amp; Edge AI Accelerators</div>
-                      </div>
-                      <div class="about-fact-item">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <div><strong>Philosophy:</strong> Learn something new every day</div>
-                      </div>
-                    </div>
-
-                    <div style="display:flex;gap:0.85rem;flex-wrap:wrap;align-items:center;">
-                      <a href="resume.pdf" target="_blank" download class="btn-resume">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Resume (PDF)
-                      </a>
-                      <a href="#" data-nav="contact" class="btn-white" style="height:auto;padding:0.65rem 1.4rem;font-size:0.875rem;">
-                        Get in Touch
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Single Unified Narrative Flow -->
-                <div class="about-story-single animate-on-scroll">
-                  <p>
-                    Greetings! I am <strong>Jhotheeshwar</strong>, currently a 3rd-year <strong>B.E. Electronics Engineering (VLSI Design and Technology)</strong> undergraduate at <strong>Chennai Institute of Technology (CIT Chennai)</strong>. I completed all my schooling from 1st through 12th standard at <strong>Kendriya Vidyalaya</strong>.
-                  </p>
-
-                  <p>
-                    My journey into technology began around the age of 12. While most kids my age simply consumed electronics, I was constantly questioning how they actually functioned. How does a television beam moving pictures across a flat piece of glass? How can a pocket calculator compute mathematical operations instantaneously? But the single question that captivated my mind and set my life's direction was:
-                  </p>
-
-                  <div class="story-quote-callout">
-                    &ldquo;How can electricity solve mathematical problems?&rdquo;
-                  </div>
-
-                  <p>
-                    In <strong>Class 9</strong>, I was first introduced to the concept of <em>programming</em>&mdash;the realization that human thoughts could be translated into precise machine instructions. By <strong>Class 11</strong>, I began learning <strong>Python</strong>, which deepened my fascination with modern computing abstractions and the software world.
-                  </p>
-
-                  <p>
-                    After completing Class 12, I wanted to understand the physical hardware beneath the code. My brother suggested I explore the specialized <strong>VLSI (Very Large Scale Integration)</strong> degree at CIT Chennai. Researching the semiconductor industry and microchip fabrication quickly showed me that silicon is the physical realm where physics, electricity, and logic converge. It was the exact answer to the question I asked when I was 12, and I knew immediately that this was where I wanted to dedicate my engineering career.
-                  </p>
-
-                  <p>
-                    Since joining college, I have developed numerous hardware projects, prototyping on FPGAs such as the <strong>Lattice CertusPro-NX</strong>, <strong>ZedBoard (Zynq-7000)</strong>, <strong>AMD Kria KV260</strong>, and <strong>Tang Nano-9K</strong>, as well as microcontrollers and MPUs including the <strong>Renesas RA8P1 &amp; RA6E2</strong>, <strong>Raspberry Pi 4</strong>, and <strong>ESP32</strong>.
-                  </p>
-
-                  <p>
-                    Above all, I live by the philosophy that <strong>the true purpose of life is to learn something new every single day</strong>. That relentless curiosity pushes me to explore novel hardware architectures, optimize real-time algorithms, and dive into emerging tech.
-                  </p>
-
-                  <p>
-                    Outside of engineering and academics, I believe in maintaining a well-rounded life: I enjoy <strong>swimming</strong>, playing <strong>chess</strong>, and <strong>hanging out with friends</strong>.
-                  </p>
-
-                  <div class="hobbies-wrap" style="margin-top:1.5rem;">
-                    <span class="hobby-pill">🏊 Swimming</span>
-                    <span class="hobby-pill">♟️ Playing Chess</span>
-                    <span class="hobby-pill">👥 Hanging Out with Friends</span>
-                    <span class="hobby-pill">⚡ Continuous Daily Learning</span>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Skills Scrolling Banner -->
-              <div class="skills-banner animate-on-scroll">
-                <div class="skills-track">
-                  <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
-                  <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>&mu;T-Kernel 3.0</span>
-                  <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
-                  <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
-                  <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
-                  <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
-                  <!-- Loop duplicate -->
-                  <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
-                  <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>&mu;T-Kernel 3.0</span>
-                  <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
-                  <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
-                  <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
-                  <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
-                </div>
-              </div>
-
-            </div>
-          </section>
-        </div>
-
-        <!-- ==================== CONTACT PAGE ==================== -->
-        <div class="page-section" id="page-contact">
-          <section class="contact-section" style="padding-top:8rem;">
-            <div class="container">
-              <div class="section-header animate-on-scroll" style="margin-bottom:3rem;">
-                <h2 class="section-title font-serif">Get in Touch</h2>
-                <p class="section-desc">Have a project in mind or want to collaborate? Send me a message!</p>
-              </div>
-
-              <div class="contact-grid">
-                <div class="contact-info animate-on-scroll stagger-1">
-                  <h3 class="font-serif">Contact Information</h3>
-                  <p>Feel free to reach out through email or the contact form. I'm always open to discussing new projects, embedded AI opportunities, or collaborating on challenging hardware-software engineering problems.</p>
-
-                  <div class="contact-info-item">
-                    <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    <a href="mailto:ssjhotheeshwar@gmail.com">ssjhotheeshwar@gmail.com</a>
-                  </div>
-                  <div class="contact-info-item">
-                    <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <a href="tel:+919043631844">+91 9043631844</a>
-                  </div>
-                  <div class="contact-info-item">
-                    <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Chennai, Tamil Nadu, India</span>
-                  </div>
-                  <div class="contact-info-item">
-                    <svg class="contact-info-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" rel="noopener">github.com/S-S-JHOTHEESHWAR</a>
-                  </div>
-                </div>
-
-                <form class="contact-form animate-on-scroll stagger-2" id="contactForm">
-                  <div class="form-group">
-                    <label class="form-label" for="cName">Name</label>
-                    <input type="text" id="cName" class="form-input" placeholder="Your name" required />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cEmail">Email</label>
-                    <input type="email" id="cEmail" class="form-input" placeholder="your@email.com" required />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cSubject">Subject</label>
-                    <input type="text" id="cSubject" class="form-input" placeholder="Project collaboration / Internship" required />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cMessage">Message</label>
-                    <textarea id="cMessage" class="form-textarea" placeholder="Tell me about your project, team, or inquiry..." required></textarea>
-                  </div>
-                  <button type="submit" class="form-submit">Send Message</button>
-                  <div id="contactStatus" style="margin-top:0.75rem;font-size:0.85rem;display:none;"></div>
-                </form>
-              </div>
-            </div>
-          </section>
-        </div>
-
-      </div>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-      <div class="container footer-inner">
-        <div class="social-links">
-          <!-- LinkedIn -->
-          <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" href="https://www.linkedin.com/in/jhotheeshwar-s-s-0a5b4a32a/">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            <span>Explore Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <!-- GitHub -->
-          <a target="_blank" rel="noopener noreferrer" aria-label="GitHub" href="https://github.com/S-S-JHOTHEESHWAR">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <a href="resume.pdf" target="_blank" download class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Resume</span>
           </a>
-          <!-- Email -->
-          <a aria-label="Email" href="mailto:ssjhotheeshwar@gmail.com">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="#contact" class="btn-secondary">
+            <span>Get in Touch</span>
           </a>
         </div>
-        <div class="footer-copy">&copy; 2026 Jhotheeshwar S S. All rights reserved.</div>
       </div>
-    </footer>
+    </section>
 
-  </div>
+    <!-- Projects Section ("My Work's") -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title font-serif">My Work</h2>
+          <p class="section-subtitle">People Lie, Hardware & Code Won't</p>
+        </div>
 
-  <!-- ===== JAVASCRIPT ===== -->
+        <!-- Filter Chips -->
+        <div class="filter-chips">
+          <button class="chip-btn active" data-filter="all">All Projects</button>
+          <button class="chip-btn" data-filter="edge-ai">Edge AI & FPGA</button>
+          <button class="chip-btn" data-filter="rtos">RTOS & Embedded</button>
+          <button class="chip-btn" data-filter="hardware">Hardware Security</button>
+          <button class="chip-btn" data-filter="production">Production Systems</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- Project 1: Vision-x -->
+          <article class="project-card" data-category="rtos edge-ai">
+            <div>
+              <div class="card-meta">
+                <span class="card-badge gold">TRON Contest Finalist</span>
+                <span class="card-date">JUN 2026</span>
+              </div>
+              <h3 class="project-title font-serif">Vision-x: Real-Time Vision AI Object Detection</h3>
+              <ul class="project-bullets">
+                <li>Engineered on <strong>Renesas RA8P1</strong> using <strong>μT-Kernel 3.0 (TRON RTOS)</strong> with a multithreaded architecture for concurrent camera capture, NPU inference, and LCD rendering with deterministic real-time performance.</li>
+                <li>Integrated and optimized an <strong>INT8 YOLOX</strong> object detection model on the <strong>Arm Ethos-U55 NPU</strong>, implementing CPU–NPU shared-memory synchronization.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tech-tags">
+                <span class="tech-pill">Renesas RA8P1</span>
+                <span class="tech-pill">μT-Kernel 3.0</span>
+                <span class="tech-pill">Arm Ethos-U55</span>
+                <span class="tech-pill">YOLOX INT8</span>
+                <span class="tech-pill">C</span>
+                <span class="tech-pill">e2 studio</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub Repository</span>
+                </a>
+                <span class="card-date">Real-Time RTOS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: LATTEYES -->
+          <article class="project-card" data-category="edge-ai">
+            <div>
+              <div class="card-meta">
+                <span class="card-badge gold">VLSID 2026 Winner (92% Acc)</span>
+                <span class="card-date">JAN 2026</span>
+              </div>
+              <h3 class="project-title font-serif">LATTEYES: Multi-Purpose Edge-AI Surveillance System</h3>
+              <ul class="project-bullets">
+                <li>Designed and implemented a 4-mode Edge-AI surveillance system (Intruder, Wildlife, Industrial Fire, Border/Drone) on <strong>Lattice CertusPro-NX FPGA</strong>, achieving <strong>92% object detection accuracy</strong>.</li>
+                <li>Implemented <strong>MobileNetV2-SSD</strong> on an FPGA-based CNN accelerator, enabling efficient real-time object detection at the edge.</li>
+                <li>Integrated HM0360 camera (640×480), dual-PIR sensors, and AXI Interface for real-time bounding box rendering and live annotated streaming without cloud dependency.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tech-tags">
+                <span class="tech-pill">CertusPro-NX FPGA</span>
+                <span class="tech-pill">MobileNetV2-SSD</span>
+                <span class="tech-pill">Verilog RTL</span>
+                <span class="tech-pill">AXI Interface</span>
+                <span class="tech-pill">HM0360</span>
+                <span class="tech-pill">Radiant</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub Repository</span>
+                </a>
+                <span class="card-date">CNN Accelerator</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: SafeLink -->
+          <article class="project-card" data-category="hardware">
+            <div>
+              <div class="card-meta">
+                <span class="card-badge">Hardware Cryptography</span>
+                <span class="card-date">FEB 2026</span>
+              </div>
+              <h3 class="project-title font-serif">SafeLink: Secure Real-Time Sensor SPN Encryption</h3>
+              <ul class="project-bullets">
+                <li>Established a hardware-based secure sensor communication system on <strong>Zynq-7000 FPGA (ZedBoard)</strong> using pure <strong>Verilog RTL</strong>, achieving deterministic real-time operation without CPU involvement.</li>
+                <li>Designed an 8-bit Substitution-Permutation Network (SPN) encryption engine featuring XOR key mixing, 4-bit S-box, permutation layer, and checksum transmitting encrypted data via UART.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tech-tags">
+                <span class="tech-pill">ZedBoard Zynq-7000</span>
+                <span class="tech-pill">Verilog RTL</span>
+                <span class="tech-pill">SPN Cipher</span>
+                <span class="tech-pill">Vivado</span>
+                <span class="tech-pill">UART</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub Repository</span>
+                </a>
+                <span class="card-date">Zero CPU Overhead</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: PiAssistant -->
+          <article class="project-card" data-category="edge-ai">
+            <div>
+              <div class="card-meta">
+                <span class="card-badge">Offline LLM & Voice AI</span>
+                <span class="card-date">FEB 2026</span>
+              </div>
+              <h3 class="project-title font-serif">PiAssistant: Offline Hindi Voice AI System</h3>
+              <ul class="project-bullets">
+                <li>Developed a completely offline, privacy-preserving Hindi voice assistant on <strong>Raspberry Pi 4</strong> integrating local ASR, LLM inference, and TTS.</li>
+                <li>Orchestrated <strong>Whisper</strong>, <strong>Ollama (Gemma)</strong>, and <strong>Piper</strong> into a low-latency, real-time voice pipeline optimized for embedded edge execution with zero cloud dependence.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tech-tags">
+                <span class="tech-pill">Raspberry Pi 4</span>
+                <span class="tech-pill">Whisper</span>
+                <span class="tech-pill">Ollama Gemma</span>
+                <span class="tech-pill">Piper TTS</span>
+                <span class="tech-pill">Python</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub Repository</span>
+                </a>
+                <span class="card-date">100% On-Device</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: IMD Platform -->
+          <article class="project-card" data-category="production">
+            <div>
+              <div class="card-meta">
+                <span class="card-badge gold">Deployed at RMC Chennai</span>
+                <span class="card-date">MAY - JUN 2026</span>
+              </div>
+              <h3 class="project-title font-serif">AWS–ARG Automated Quality Control & Health Monitoring</h3>
+              <ul class="project-bullets">
+                <li>Developed a Python-based platform for <strong>India Meteorological Department (IMD)</strong> used daily by the Regional Meteorological Centre (RMC), Chennai.</li>
+                <li>Automates sensor validation, fault analysis, GSM-based telemetry parsing, and operational reporting compliant with World Meteorological Organization (WMO) standards.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tech-tags">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">AWS / ARG</span>
+                <span class="tech-pill">GSM Telemetry</span>
+                <span class="tech-pill">Quality Control</span>
+                <span class="tech-pill">WMO Standards</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-link" style="color: #4ade80;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>In Daily Production</span>
+                </span>
+                <span class="card-date">IMD Chennai</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Banner (Minimalist aesthetic like sample) -->
+    <section class="quote-banner">
+      <div class="container">
+        <blockquote class="quote-text">
+          &ldquo;Deterministic performance isn't just a requirement — it is the art of precision in silicon, RTL, and real-time execution.&rdquo;
+        </blockquote>
+      </div>
+    </section>
+
+        <!-- Experience & Education Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title font-serif">Work Experience &amp; Education</h2>
+          <p class="section-subtitle">Real-world engineering, industry internships &amp; academic foundation</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1: Switch Mobility -->
+          <div class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <span class="card-badge" style="margin-bottom:0.5rem;display:inline-block;">Automotive Embedded Systems</span>
+                <h3 class="timeline-role">Switch Mobility (Ashok Leyland)</h3>
+                <div class="timeline-company">Intern &mdash; EV Subsystems &amp; CAN Communication • Ennore, Chennai</div>
+              </div>
+              <span class="timeline-date">MAY 2025 – JUN 2025</span>
+            </div>
+            <ul class="project-bullets" style="margin-top: 0.8rem; margin-bottom: 0;">
+              <li>Investigated <strong>CAN communication</strong> protocols and inter-ECU interaction, mastering how electric commercial vehicle subsystems exchange data for critical vehicle control, telemetry monitoring, and fault diagnostics.</li>
+              <li>Acquired hands-on practical knowledge of key automotive sensors including <strong>torque sensors</strong>, <strong>steering angle sensors</strong>, and <strong>inductive proximity sensors</strong> in operational EV drivetrains.</li>
+            </ul>
+          </div>
+
+          <!-- Item 2: CIT VLSI CoE -->
+          <div class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <span class="card-badge gold" style="margin-bottom:0.5rem;display:inline-block;">Digital Architecture &amp; RTL</span>
+                <h3 class="timeline-role">VLSI Centre of Excellence (CoE)</h3>
+                <div class="timeline-company">VLSI Intern &mdash; Chennai Institute of Technology • Chennai, India</div>
+              </div>
+              <span class="timeline-date">2025</span>
+            </div>
+            <ul class="project-bullets" style="margin-top: 0.8rem; margin-bottom: 0;">
+              <li>Developed and verified digital logic architectures in <strong>Verilog RTL</strong>, implementing behavioral and gate-level simulations for custom hardware modules.</li>
+              <li>Conducted functional verification, timing analysis, and synthesis workflows utilizing industry-standard EDA environments including <strong>Cadence</strong>, <strong>Synopsys</strong>, and <strong>Xilinx Vivado</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Item 3: IMD Chennai -->
+          <div class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <span class="card-badge" style="background:rgba(52,211,153,0.12);color:#6ee7b7;border-color:rgba(52,211,153,0.25);margin-bottom:0.5rem;display:inline-block;">Production Software &amp; Telemetry</span>
+                <h3 class="timeline-role">India Meteorological Department (IMD)</h3>
+                <div class="timeline-company">Engineering Intern &mdash; Regional Meteorological Centre (RMC), Chennai</div>
+              </div>
+              <span class="timeline-date">MAY 2026 – JUN 2026</span>
+            </div>
+            <ul class="project-bullets" style="margin-top: 0.8rem; margin-bottom: 0;">
+              <li>Acquired expertise in Automatic Weather Stations (AWS), Automatic Rain Gauges (ARG), data loggers, GSM-based telemetry, and World Meteorological Organization (WMO) compliant observational practices.</li>
+              <li>Engineered a Python-based <strong>AWS–ARG Quality Control &amp; Health Monitoring platform</strong>, currently adopted into daily operational use by meteorologists at RMC Chennai for automated sensor validation, fault analysis, and operational reporting.</li>
+            </ul>
+          </div>
+
+          <!-- Item 4: Education CIT -->
+          <div class="timeline-item">
+            <div class="timeline-top">
+              <div>
+                <span class="card-badge" style="margin-bottom:0.5rem;display:inline-block;">Undergraduate Degree</span>
+                <h3 class="timeline-role">Chennai Institute of Technology</h3>
+                <div class="timeline-company">B.E. Electronics Engineering (VLSI Design and Technology) • Chennai, India</div>
+              </div>
+              <span class="timeline-date">2024 – 2028</span>
+            </div>
+            <p style="color: #d4d4d8; font-size: 0.95rem; margin-top: 0.5rem;">
+              <strong>Cumulative GPA: 8.4 / 10</strong>
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.3rem;">
+              Focus areas: VLSI System Design, FPGA Prototyping, Verilog RTL, Computer Architecture, Embedded RTOS, and Edge AI Hardware Accelerators. Schooling: 1st to 12th at Kendriya Vidyalaya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title font-serif">Technical Skills</h2>
+          <p class="section-subtitle">Silicon, firmware, acceleration, and software stack</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Languages & Core
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">Verilog RTL</span>
+              <span class="skill-item">C (Embedded)</span>
+              <span class="skill-item">Python</span>
+              <span class="skill-item">Java</span>
+              <span class="skill-item">Assembly</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              Processors & Controllers
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">Renesas RA8P1</span>
+              <span class="skill-item">Renesas RA6E2</span>
+              <span class="skill-item">Raspberry Pi 4</span>
+              <span class="skill-item">ESP32</span>
+              <span class="skill-item">VEGA Aries V2</span>
+              <span class="skill-item">μT-Kernel 3.0 (TRON)</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              FPGAs & SoC Platforms
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">Lattice CertusPro-NX</span>
+              <span class="skill-item">ZedBoard Zynq-7000</span>
+              <span class="skill-item">AMD Kria KV260</span>
+              <span class="skill-item">Tang Nano-9K</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+              Hardware & Network Protocols
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">CAN Bus</span>
+              <span class="skill-item">AXI Interface</span>
+              <span class="skill-item">UART</span>
+              <span class="skill-item">SPI</span>
+              <span class="skill-item">I2C</span>
+              <span class="skill-item">I2S</span>
+              <span class="skill-item">JTAG</span>
+              <span class="skill-item">USB</span>
+              <span class="skill-item">BLE</span>
+              <span class="skill-item">WiFi</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              AI / ML & Edge Vision
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">PyTorch</span>
+              <span class="skill-item">ONNX</span>
+              <span class="skill-item">TensorFlow / Keras</span>
+              <span class="skill-item">OpenCV</span>
+              <span class="skill-item">Arm Ethos-U55 NPU</span>
+              <span class="skill-item">MobileNetV2-SSD</span>
+              <span class="skill-item">YOLOX INT8</span>
+              <span class="skill-item">NumPy</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-category">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              EDA & Engineering Tools
+            </h3>
+            <div class="skill-list">
+              <span class="skill-item">Synopsys</span>
+              <span class="skill-item">Cadence</span>
+              <span class="skill-item">Xilinx Vivado</span>
+              <span class="skill-item">Lattice Radiant</span>
+              <span class="skill-item">Renesas e2 studio</span>
+              <span class="skill-item">Semulator 3D</span>
+              <span class="skill-item">LTspice</span>
+              <span class="skill-item">Git / GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Achievements & Contests Section (Dedicated Separate Section) -->
+    <section id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title font-serif">Honors &amp; Achievements</h2>
+          <p class="section-subtitle">Competitive benchmarks, international recognitions &amp; certifications</p>
+        </div>
+
+        <!-- Featured Award Card with vlsi_dc_award.jpeg -->
+        <div class="award-card">
+          <div class="award-img-wrap">
+            <img src="vlsi_dc_award.jpeg" alt="Winner of VLSID 2026 Design Contest Award Ceremony" />
+            <div class="award-img-overlay">🏆 Winner Award · 39th International VLSI Design Conference (VLSID 2026)</div>
+          </div>
+          <div class="award-info">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+              <span class="card-badge gold">Design Contest 1st Place</span>
+              <span class="card-date">JAN 2026</span>
+            </div>
+            <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.85rem;color:#ffffff;line-height:1.3;margin-bottom:0.75rem;">
+              Winner &mdash; VLSID 2026 International Design Contest
+            </h3>
+            <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.75;margin-bottom:1.25rem;">
+              Awarded 1st place at the prestigious <strong>39th International Conference on VLSI Design (VLSID 2026)</strong> for designing and implementing <strong>LATTEYES</strong>: a 4-mode Edge-AI surveillance system on the <strong>Lattice CertusPro-NX FPGA</strong>. The system achieved <strong>92% detection accuracy</strong> utilizing an on-chip MobileNetV2-SSD CNN accelerator, HM0360 camera, dual-PIR sensors, and AXI Interface for cloud-independent, real-time operation.
+            </p>
+            <div class="tech-tags" style="margin-bottom:0;">
+              <span class="tech-pill">Lattice CertusPro-NX FPGA</span>
+              <span class="tech-pill">MobileNetV2-SSD</span>
+              <span class="tech-pill">Verilog RTL</span>
+              <span class="tech-pill">AXI Interface</span>
+              <span class="tech-pill">Edge AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Honors Grid -->
+        <div class="achievements-grid">
+          <div class="achievement-card">
+            <div class="achievement-icon">⚡</div>
+            <div class="achievement-info">
+              <h4>TRON Contest 2026 Finalist</h4>
+              <p>Selected as Finalist for developing <strong>Vision-x</strong>: a real-time Vision AI application on the <strong>Renesas RA8P1</strong> microcontroller utilizing <strong>μT-Kernel 3.0 (TRON RTOS)</strong> and the <strong>Arm Ethos-U55 NPU</strong>.</p>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon">🛡️</div>
+            <div class="achievement-info">
+              <h4>IIT Bombay - Safetronics Finalist</h4>
+              <p>Finalist in the national level Safetronics competition organized by <strong>IIT Bombay</strong> (December 2025), focusing on safety-critical automotive embedded systems and fault tolerance.</p>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon">📜</div>
+            <div class="achievement-info">
+              <h4>NPTEL &amp; Industry Certifications</h4>
+              <p>Certified in <em>Introduction to Industry 4.0</em>, <em>System Design through Verilog</em>, and <em>Sensors &amp; Actuators</em> from NPTEL. Completed the EduSkills Microchip Embedded System Developer Virtual Internship.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Problem Solving Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">191</div>
+            <div class="stat-label">LeetCode Solved</div>
+            <div class="stat-sub">Contest Rating: 1,281</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">51</div>
+            <div class="stat-label">CodeChef Solved</div>
+            <div class="stat-sub">Contest Rating: 785</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">138</div>
+            <div class="stat-label">SkillRack Solved</div>
+            <div class="stat-sub">Algorithmic Problems</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- About Section (Single Unified Section, No Multiple Chapters) -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title font-serif">About Me</h2>
+          <p class="section-subtitle">The journey of an aspiring chip designer and edge AI engineer</p>
+        </div>
+
+        <div class="about-unified-wrap">
+          <!-- Spotlight Profile Card with jho.jpeg -->
+          <div class="about-profile-card">
+            <div class="about-avatar">
+              <img src="jho.jpeg" alt="Jhotheeshwar S S" />
+            </div>
+            <div class="about-details">
+              <h3 class="font-serif">Jhotheeshwar S S</h3>
+              <div class="about-role-tag">
+                <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
+                <span>3rd Year VLSI Undergraduate · Chennai Institute of Technology</span>
+              </div>
+
+              <div class="about-facts-grid">
+                <div class="about-fact-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  <div><strong>Degree:</strong> B.E. VLSI (CIT Chennai) · CGPA 8.4</div>
+                </div>
+                <div class="about-fact-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  <div><strong>Schooling:</strong> Kendriya Vidyalaya (1st–12th)</div>
+                </div>
+                <div class="about-fact-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <div><strong>Core Focus:</strong> VLSI &amp; Edge AI Accelerators</div>
+                </div>
+                <div class="about-fact-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div><strong>Philosophy:</strong> Learn something new every day</div>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:0.85rem;flex-wrap:wrap;align-items:center;">
+                <a href="resume.pdf" target="_blank" download class="btn-primary" style="padding:0.65rem 1.5rem;font-size:0.88rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Download Resume (PDF)</span>
+                </a>
+                <a href="#contact" class="btn-secondary" style="padding:0.65rem 1.4rem;font-size:0.88rem;">
+                  <span>Get in Touch</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Unified Narrative Flow -->
+          <div class="about-narrative-card">
+            <p>
+              Greetings! I am <strong>Jhotheeshwar</strong>, currently a 3rd-year <strong>B.E. Electronics Engineering (VLSI Design and Technology)</strong> undergraduate at <strong>Chennai Institute of Technology (CIT Chennai)</strong>. I completed all my schooling from 1st through 12th standard at <strong>Kendriya Vidyalaya</strong>.
+            </p>
+
+            <p>
+              My journey began around the age of 12. While most kids my age simply consumed technology, I couldn't stop questioning everything about how it actually functioned. How does a television beam moving pictures across a flat piece of glass? How can a simple pocket calculator solve complex arithmetic sums instantaneously? But the single question that captivated my mind and set my life's direction was:
+            </p>
+
+            <div class="about-quote-box">
+              &ldquo;How can mere electricity solve mathematical problems?&rdquo;
+            </div>
+
+            <p>
+              In <strong>Class 9</strong>, I was first introduced to the concept of <em>programming</em>&mdash;the realization that human logic could be translated into machine instructions. By <strong>Class 11</strong>, I began learning <strong>Python</strong>, which deepened my fascination with modern computing abstractions and the digital world.
+            </p>
+
+            <p>
+              After completing Class 12, I wanted to understand the physical hardware beneath the code. My brother suggested I explore the specialized <strong>VLSI (Very Large Scale Integration)</strong> degree at CIT Chennai. Researching the semiconductor industry and microchip fabrication quickly showed me that silicon is the physical realm where physics, electricity, and logic converge. It was the direct answer to the question I asked when I was 12, and I knew immediately that this was where I wanted to dedicate my engineering career.
+            </p>
+
+            <p>
+              Since joining college, I have developed numerous hardware projects, prototyping on FPGAs such as the <strong>Lattice CertusPro-NX</strong>, <strong>ZedBoard (Zynq-7000)</strong>, <strong>AMD Kria KV260</strong>, and <strong>Tang Nano-9K</strong>, as well as microcontrollers and MPUs including the <strong>Renesas RA8P1 &amp; RA6E2</strong>, <strong>Raspberry Pi 4</strong>, and <strong>ESP32</strong>.
+            </p>
+
+            <p>
+              Above all, I live by the philosophy that <strong>the true purpose of life is to learn something new every single day</strong>. That relentless curiosity pushes me to explore novel hardware architectures, optimize real-time algorithms, and dive into emerging tech.
+            </p>
+
+            <p>
+              Outside of engineering and academics, I believe in staying well-rounded: I enjoy <strong>swimming</strong>, playing <strong>chess</strong>, and <strong>hanging out with friends</strong>.
+            </p>
+
+            <div class="hobbies-row">
+              <span class="hobby-tag">🏊 Swimming</span>
+              <span class="hobby-tag">♟️ Playing Chess</span>
+              <span class="hobby-tag">👥 Hanging Out with Friends</span>
+              <span class="hobby-tag">⚡ Continuous Daily Learning</span>
+            </div>
+          </div>
+
+          <!-- Skills Scrolling Banner -->
+          <div class="skills-marquee-wrap">
+            <div class="skills-marquee-track">
+              <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
+              <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
+              <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
+              <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
+              <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
+              <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
+              <!-- Loop duplicate -->
+              <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
+              <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
+              <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
+              <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
+              <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
+              <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs Section (Modeled exactly like singhrishab.vercel.app) -->
+    <section id="faq">
+      <div class="container">
+        <div class="faq-layout">
+          <div class="faq-sticky">
+            <h2 class="font-serif">FAQs</h2>
+            <p>Common questions regarding Edge AI, FPGA architecture & embedded engineering</p>
+          </div>
+
+          <div class="faq-list">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button class="faq-btn">
+                <span>What is an Edge-AI hardware accelerator and why is it important?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>An Edge-AI accelerator (such as an FPGA CNN engine or dedicated NPU like the Arm Ethos-U55) executes neural network tensor computations directly on localized hardware rather than streaming data to remote cloud servers. This drastically minimizes latency, cuts power consumption, guarantees deterministic timing, and preserves data privacy by never letting raw camera or sensor feeds leave the device.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-btn">
+                <span>Why use an RTOS like μT-Kernel 3.0 on Renesas RA8P1?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>μT-Kernel 3.0 is a standardized real-time operating system (RTOS) developed under the TRON Project. In high-speed vision systems, tasks like camera DMA frame capture, NPU weight processing, and LCD frame buffer rendering must run concurrently with strict deterministic deadlines. An RTOS provides prioritized preemption, semaphore synchronization, and predictable latency that bare-metal code cannot cleanly manage.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-btn">
+                <span>How does FPGA-based SPN encryption outperform software ciphers?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>In software, encryption consumes significant CPU clock cycles and suffers from variable execution time depending on cache hits and OS interrupts. In contrast, implementing an 8-bit Substitution-Permutation Network (SPN) in Verilog RTL transforms rounds of substitution, permutation, and key mixing into pure combinational logic and registers, executing in constant clock cycles with zero host CPU load.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-btn">
+                <span>How do you handle quantization for INT8 model deployment?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Floating-point 32-bit models require excessive memory bandwidth and silicon area. Using Post-Training Quantization (PTQ) or Quantization-Aware Training (QAT), weights and activations are mapped to 8-bit integers (INT8) with minimal accuracy degradation. Dedicated NPU MAC (Multiply-Accumulate) units process INT8 vectors at 4x higher throughput and significantly reduced milliwatt budgets.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button class="faq-btn">
+                <span>Can your projects operate completely air-gapped without internet?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Yes, all edge projects — including LATTEYES (Lattice CertusPro-NX FPGA surveillance), Vision-x (Renesas RA8P1), SafeLink (ZedBoard Zynq-7000), and PiAssistant (offline speech + Gemma LLM) — are engineered specifically to run completely autonomous, air-gapped, and independent of internet connectivity or cloud infrastructure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <span class="card-badge" style="margin-bottom: 1rem; display: inline-block;">Get In Touch</span>
+            <h3 class="font-serif">Have a question or planning a project?</h3>
+            <p>
+              I am open to discussions regarding internships, hardware-software co-design collaborations, research initiatives, or embedded system challenges.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:ssjhotheeshwar@gmail.com" class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Email</div>
+                  <div>ssjhotheeshwar@gmail.com</div>
+                </div>
+              </a>
+
+              <a href="tel:+919043631844" class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Phone</div>
+                  <div>+91 9043631844</div>
+                </div>
+              </a>
+
+              <div class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Location</div>
+                  <div>Chennai, Tamil Nadu, India</div>
+                </div>
+              </div>
+
+              <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">GitHub</div>
+                  <div>github.com/S-S-JHOTHEESHWAR</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="formName">Your Name</label>
+              <input type="text" id="formName" class="form-input" placeholder="e.g. Alex Morgan" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formEmail">Email Address</label>
+              <input type="email" id="formEmail" class="form-input" placeholder="e.g. alex@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formSubject">Subject</label>
+              <input type="text" id="formSubject" class="form-input" placeholder="Project collaboration / Internship discussion" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formMessage">Message</label>
+              <textarea id="formMessage" class="form-textarea" placeholder="Tell me about your project, team, or inquiry..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <div id="formStatus" style="margin-top: 1rem; font-size: 0.85rem; text-align: center; display: none;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="brand-title font-serif" style="margin-bottom: 0;">S S JHOTHEESHWAR</div>
+      <p style="color: var(--text-muted);">
+        Hardware Powers AI &copy; 2026 S S Jhotheeshwar. Built with precision.
+      </p>
+      <div class="footer-links">
+        <a href="#home" class="footer-link">Home</a>
+        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#experience" class="footer-link">Experience</a>
+        <a href="#skills" class="footer-link">Skills</a>
+        <a href="resume.pdf" target="_blank" download class="footer-link">Download CV</a>
+        <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="footer-link">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
   <script>
-    // ——— SPA Navigation ———
-    const navButtons = document.querySelectorAll('[data-nav]');
-    const pageSections = document.querySelectorAll('.page-section');
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
 
-    function navigateTo(page) {
-      // Hide all pages
-      pageSections.forEach(s => s.classList.remove('active-page'));
-
-      // Show target page
-      const target = document.getElementById('page-' + page);
-      if (target) {
-        target.classList.add('active-page');
-      }
-
-      // Update nav buttons active state
-      document.querySelectorAll('.nav-btn[data-nav]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.nav === page);
-      });
-
-      // Close mobile menu
-      document.getElementById('mobileDrawer').classList.remove('open');
-      document.getElementById('mobileMenuBtn').classList.remove('open');
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Re-trigger scroll animations
-      setTimeout(observeAnimations, 100);
-    }
-
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigateTo(btn.dataset.nav);
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
       });
     });
 
-    // ——— Mobile menu toggle ———
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileDrawer = document.getElementById('mobileDrawer');
+    // Active navigation underline indicator based on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navButtons = document.querySelectorAll('nav.nav-links a.nav-btn');
 
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenuBtn.classList.toggle('open');
-      mobileDrawer.classList.toggle('open');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(sec => {
+        const sectionTop = sec.offsetTop - 140;
+        const sectionHeight = sec.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('href') === `#${current}`) {
+          btn.classList.add('active');
+        }
+      });
     });
 
-    // ——— FAQ Accordion ———
-    document.querySelectorAll('.faq-question').forEach(btn => {
+    // Project Filter Chips
+    const filterButtons = document.querySelectorAll('.chip-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const categories = card.getAttribute('data-category') || '';
+            if (categories.includes(filter)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    // FAQ Accordion
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
-        const wasOpen = item.classList.contains('open');
+        const isOpen = item.classList.contains('open');
+        
+        // Close other items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
 
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => {
-          i.classList.remove('open');
-          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        });
-
-        // Toggle current
-        if (!wasOpen) {
+        if (!isOpen) {
           item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
 
-    // ——— Scroll animations (IntersectionObserver) ———
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    // Contact Form handling
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
 
-    function observeAnimations() {
-      document.querySelectorAll('.animate-on-scroll:not(.visible), .animate-scale:not(.visible)').forEach(el => {
-        observer.observe(el);
-      });
-    }
-
-    observeAnimations();
-
-    // ——— Contact form submit ———
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('cName').value.trim();
-      const email = document.getElementById('cEmail').value.trim();
-      const subject = document.getElementById('cSubject').value.trim();
-      const message = document.getElementById('cMessage').value.trim();
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const subject = document.getElementById('formSubject').value.trim();
+      const message = document.getElementById('formMessage').value.trim();
 
-      const mailto = 'mailto:ssjhotheeshwar@gmail.com?subject=' +
-        encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')
+      // Formulate mailto link
+      const mailtoUrl = `mailto:ssjhotheeshwar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+      
+      formStatus.style.display = 'block';
+      formStatus.style.color = '#38bdf8';
+      formStatus.textContent = 'Opening your email client to send message...';
 
-' + message);
-
-      const status = document.getElementById('contactStatus');
-      status.style.display = 'block';
-      status.style.color = '#38bdf8';
-      status.textContent = 'Opening your email client to send message...';
-
-      window.location.href = mailto;
+      window.location.href = mailtoUrl;
 
       setTimeout(() => {
-        status.style.color = '#4ade80';
-        status.textContent = 'Message drafted! Thank you for reaching out.';
-        document.getElementById('contactForm').reset();
+        formStatus.style.color = '#4ade80';
+        formStatus.textContent = 'Message drafted! Thank you for reaching out.';
+        contactForm.reset();
       }, 1500);
     });
   </script>
