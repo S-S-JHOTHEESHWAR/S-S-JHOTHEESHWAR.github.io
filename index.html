@@ -397,29 +397,209 @@
     }
 
     /* Projects Grid */
+    /* ===== ROW-WISE PROJECTS ARCHITECTURE ===== */
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
     }
 
     .project-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+    }
+
+    @media (min-width: 960px) {
+      .project-card {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
     }
 
     .project-card:hover {
       background: var(--card-hover);
       border-color: var(--card-border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-content {
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-prototype-col {
+      position: relative;
+      background: #09090b;
+      min-height: 280px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--card-border);
+    }
+
+    @media (min-width: 960px) {
+      .project-prototype-col {
+        border-top: none;
+        border-left: 1px solid var(--card-border);
+        min-height: 100%;
+      }
+    }
+
+    .prototype-media-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .prototype-media-wrap img,
+    .prototype-media-wrap video {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .prototype-media-wrap img {
+      transform: scale(1.03);
+    }
+
+    .prototype-overlay-pill {
+      position: absolute;
+      bottom: 0.85rem;
+      left: 0.85rem;
+      right: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.84);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      color: #ffffff;
+      z-index: 2;
+    }
+
+    .prototype-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      color: #7dd3fc;
+      font-size: 0.75rem;
+    }
+
+    .prototype-badge-sub {
+      font-size: 0.72rem;
+      color: #a1a1aa;
+    }
+
+    .hover-play-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.74rem;
+      color: #f4f4f5;
+      font-weight: 500;
+    }
+
+    .play-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      transition: all 0.3s ease;
+    }
+
+    .play-dot.paused {
+      background: #a1a1aa;
+      box-shadow: none;
+    }
+
+    /* Schematic / Architecture Visualizer on Right Column */
+    .prototype-schematic-wrap {
+      width: 100%;
+      height: 100%;
+      padding: 2.25rem 1.85rem 3.5rem;
+      background: radial-gradient(circle at 50% 30%, rgba(24, 24, 27, 0.8) 0%, rgba(9, 9, 11, 0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .schematic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .schematic-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #7dd3fc;
+    }
+
+    .schematic-status {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .schematic-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .rtl-block {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #e4e4e7;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .rtl-block.active {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+    }
+
+    .rtl-arrow {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1;
     }
 
     .card-meta {
@@ -901,8 +1081,30 @@
       border-radius: 14px;
       padding: 2.5rem;
       color: #d4d4d8;
-      font-size: 1.02rem;
-      line-height: 1.85;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.08rem;
+      line-height: 1.9;
+      letter-spacing: 0.01em;
+    }
+
+    .about-narrative-card p {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-style: normal;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-narrative-card strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .about-narrative-card em {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
     }
 
     .about-narrative-card p {
@@ -923,7 +1125,8 @@
       padding: 0.75rem 0 0.75rem 1.4rem;
       margin: 1.6rem 0;
       color: #ffffff;
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
       font-size: 1.45rem;
       font-style: italic;
       line-height: 1.5;
@@ -978,12 +1181,15 @@
 
     /* ===== QUOTE BANNER ===== */
     .quote-banner {
-      background: #0f0f11;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 4.5rem 0;
+      background: radial-gradient(ellipse at center, rgba(30, 41, 59, 0.25) 0%, rgba(13, 13, 15, 0.75) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 3.25rem 1.75rem;
       text-align: center;
-      margin: 3.5rem 0;
+      margin: 3.5rem auto;
+      max-width: 960px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
 
     .quote-text {
@@ -1290,9 +1496,11 @@
   <!-- Main Content: Individual Sections Architecture -->
   <main>
 
-    <!-- ==================== 1. HOME SECTION ==================== -->
+        <!-- ==================== 1. HOME & ABOUT MERGED SECTION ==================== -->
     <section class="view-section active-view" id="view-home">
       <div class="container">
+        
+        <!-- Hero Introduction -->
         <div class="hero-content-wrap">
           <div class="hero-tag">
             <span class="dot"></span>
@@ -1300,18 +1508,14 @@
           </div>
 
           <h1 class="hero-title font-serif">
-            Hardware powers AI from Silicon to the Edge
+            The world changes when curiosity turns into creation.
           </h1>
 
           <p class="hero-subtitle">
             B.E. Electronics Engineering (VLSI Design and Technology) • Chennai Institute of Technology
           </p>
 
-          <p class="hero-desc">
-            Winner of <strong>VLSID 2026 International Design Contest</strong> and <strong>TRON Programming Contest 2026 Finalist</strong>. Specialized in FPGA acceleration, deterministic real-time operating systems (μT-Kernel 3.0), hardware encryption, and on-device AI inference.
-          </p>
-
-          <div class="hero-actions">
+          <div class="hero-actions" style="margin-top: 2.25rem;">
             <button class="btn-primary" onclick="switchSection('projects')">
               <span>Explore Projects</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1326,14 +1530,128 @@
           </div>
         </div>
 
-        <!-- Quote Banner -->
-        <div class="quote-banner">
-          <blockquote class="quote-text">
-            &ldquo;Deterministic performance isn't just a requirement &mdash; it is the art of precision in silicon, RTL, and real-time execution.&rdquo;
-          </blockquote>
+        <!-- Integrated About Me Section -->
+        <div id="about-story" style="scroll-margin-top: 6rem; margin-top: 2rem;">
+          <div class="section-header" style="margin-bottom: 2.25rem;">
+            <h2 class="section-title font-serif">About Me</h2>
+            <p class="section-subtitle">Curiosity, Code &amp; Silicon Architecture</p>
+          </div>
+
+          <div class="about-unified-wrap">
+            <!-- Spotlight Profile Card with jho.jpeg -->
+            <div class="about-profile-card">
+              <div class="about-avatar">
+                <img src="jho.jpeg" alt="Jhotheeshwar S S" />
+              </div>
+              <div class="about-details">
+                <h3 class="font-serif">Jhotheeshwar S S</h3>
+                <div class="about-role-tag">
+                  <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
+                  <span>3rd Year VLSI Undergraduate · Chennai Institute of Technology</span>
+                </div>
+
+                <div class="about-facts-grid">
+                  <div class="about-fact-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <div><strong>Degree:</strong> B.E. VLSI (CIT Chennai) · CGPA 8.4</div>
+                  </div>
+                  <div class="about-fact-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    <div><strong>Schooling:</strong> Kendriya Vidyalaya (1st–12th)</div>
+                  </div>
+                  <div class="about-fact-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <div><strong>Core Focus:</strong> Silicon, FPGA &amp; Edge AI Accelerators</div>
+                  </div>
+                  <div class="about-fact-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div><strong>Philosophy:</strong> Learn something new every day</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:0.85rem;flex-wrap:wrap;align-items:center;">
+                  <a href="resume.pdf" target="_blank" download class="btn-primary" style="padding:0.65rem 1.5rem;font-size:0.88rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download Resume (PDF)</span>
+                  </a>
+                  <button class="btn-secondary" onclick="switchSection('contact')" style="padding:0.65rem 1.4rem;font-size:0.88rem;">
+                    <span>Get in Touch</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Single Unified Narrative Card -->
+            <div class="about-narrative-card">
+              <p>
+                Greetings! I am <strong>Jhotheeshwar</strong>, currently a 3rd-year <strong>B.E. Electronics Engineering (VLSI Design and Technology)</strong> undergraduate at <strong>Chennai Institute of Technology (CIT Chennai)</strong>. I completed all my schooling from 1st through 12th standard at <strong>Kendriya Vidyalaya</strong>.
+              </p>
+
+              <p>
+                My journey began around the age of 12. While most kids my age simply consumed technology, I couldn't stop questioning everything about how it actually functioned. How does a television beam moving pictures across a flat piece of glass? How can a simple pocket calculator solve complex arithmetic sums instantaneously? But the single question that captivated my mind and set my life's direction was:
+              </p>
+
+              <div class="about-quote-box">
+                &ldquo;How can mere electricity solve mathematical problems?&rdquo;
+              </div>
+
+              <p>
+                In <strong>Class 9</strong>, I was first introduced to the concept of <em>programming</em>&mdash;the realization that human logic could be translated into machine instructions. By <strong>Class 11</strong>, I began learning <strong>Python</strong>, which deepened my fascination with modern computing abstractions and the digital world.
+              </p>
+
+              <p>
+                After completing Class 12, I wanted to understand the physical hardware beneath the code. My brother suggested I explore the specialized <strong>VLSI (Very Large Scale Integration)</strong> degree at CIT Chennai. Researching the semiconductor industry and microchip fabrication quickly showed me that silicon is the physical realm where physics, electricity, and logic converge. It was the direct answer to the question I asked when I was 12, and I knew immediately that this was where I wanted to dedicate my engineering career.
+              </p>
+
+              <p>
+                Since joining college, I have developed numerous hardware projects, prototyping on FPGAs such as the <strong>Lattice CertusPro-NX</strong>, <strong>ZedBoard (Zynq-7000)</strong>, <strong>AMD Kria KV260</strong>, and <strong>Tang Nano-9K</strong>, as well as microcontrollers and MPUs including the <strong>Renesas RA8P1 &amp; RA6E2</strong>, <strong>Raspberry Pi 4</strong>, and <strong>ESP32</strong>.
+              </p>
+
+              <p>
+                Above all, I live by the philosophy that <strong>the true purpose of life is to learn something new every single day</strong>. That relentless curiosity pushes me to explore novel hardware architectures, optimize real-time algorithms, and dive into emerging tech.
+              </p>
+
+              <p>
+                Outside of engineering and academics, I believe in staying well-rounded: I enjoy <strong>swimming</strong>, playing <strong>chess</strong>, and <strong>hanging out with friends</strong>.
+              </p>
+
+              <div class="hobbies-row">
+                <span class="hobby-tag">🏊 Swimming</span>
+                <span class="hobby-tag">♟️ Playing Chess</span>
+                <span class="hobby-tag">👥 Hanging Out with Friends</span>
+                <span class="hobby-tag">⚡ Continuous Daily Learning</span>
+              </div>
+            </div>
+
+            <!-- Inspiring Motto Banner (Quote 2) -->
+            <div class="quote-banner" style="margin-top: 2.5rem; margin-bottom: 2rem;">
+              <blockquote class="quote-text">
+                &ldquo;Think in logic. Build in silicon. Dream beyond limits.&rdquo;
+              </blockquote>
+            </div>
+
+            <!-- Skills Marquee Ribbon -->
+            <div class="skills-marquee-wrap">
+              <div class="skills-marquee-track">
+                <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
+                <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
+                <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
+                <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
+                <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
+                <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
+                <!-- Loop duplicate -->
+                <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
+                <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
+                <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
+                <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
+                <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
+                <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- FAQs on Home -->
+        <!-- FAQs Accordion -->
         <div style="margin-top: 4.5rem;">
           <div class="faq-layout">
             <div class="faq-sticky">
@@ -1354,11 +1672,11 @@
 
               <div class="faq-item">
                 <button class="faq-btn">
-                  <span>Why use an RTOS like μT-Kernel 3.0 on Renesas RA8P1?</span>
+                  <span>Why use an RTOS like &mu;T-Kernel 3.0 on Renesas RA8P1?</span>
                   <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                  <p>μT-Kernel 3.0 is a standardized real-time operating system from the TRON Project. In high-speed vision systems, tasks like camera DMA frame capture, NPU inference, and LCD rendering must run concurrently with strict deterministic deadlines. An RTOS provides prioritized preemption, semaphore synchronization, and predictable latency that bare-metal code cannot cleanly manage.</p>
+                  <p>&mu;T-Kernel 3.0 is a standardized real-time operating system from the TRON Project. In high-speed vision systems, tasks like camera DMA frame capture, NPU inference, and LCD rendering must run concurrently with strict deterministic deadlines. An RTOS provides prioritized preemption, semaphore synchronization, and predictable latency that bare-metal code cannot cleanly manage.</p>
                 </div>
               </div>
 
@@ -1385,15 +1703,18 @@
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 4.5rem;">
+        <div style="text-align: center; margin-top: 4.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
           <button class="btn-primary" onclick="switchSection('projects')" style="padding: 0.85rem 2rem;">
-            Explore All Engineering Projects &rarr;
+            Explore Engineering Projects &rarr;
+          </button>
+          <button class="btn-secondary" onclick="switchSection('experience')" style="padding: 0.85rem 2rem;">
+            View Experience &rarr;
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 2. PROJECTS SECTION ==================== -->
+        <!-- ==================== 2. PROJECTS SECTION (ROW-WISE) ==================== -->
     <section class="view-section" id="view-projects">
       <div class="container">
         <div class="section-header">
@@ -1410,164 +1731,276 @@
           <button class="chip-btn" data-filter="production">Production Systems</button>
         </div>
 
-        <!-- Projects Grid -->
+        <!-- Projects List (Row-wise) -->
         <div class="projects-grid">
-          <!-- Project 1: Vision-x -->
-          <article class="project-card" data-category="rtos edge-ai">
-            <div>
-              <div class="card-meta">
-                <span class="card-badge gold">TRON Contest Finalist</span>
-                <span class="card-date">JUN 2026</span>
+          
+          <!-- Project 1: Vision-x (TRON / RA8P1 Prototype) -->
+          <article class="project-card" data-category="rtos edge-ai" data-project="vision-x">
+            <div class="project-content">
+              <div>
+                <div class="card-meta">
+                  <span class="card-badge gold">TRON Contest Finalist</span>
+                  <span class="card-date">JUN 2026</span>
+                </div>
+                <h3 class="project-title font-serif">Vision-x: Real-Time Vision AI Object Detection</h3>
+                <ul class="project-bullets">
+                  <li>Engineered on <strong>Renesas RA8P1</strong> using <strong>μT-Kernel 3.0 (TRON RTOS)</strong> with a multithreaded architecture for concurrent camera capture, NPU inference, and LCD rendering with deterministic real-time performance.</li>
+                  <li>Integrated and optimized an <strong>INT8 YOLOX</strong> object detection model on the <strong>Arm Ethos-U55 NPU</strong>, implementing CPU–NPU shared-memory synchronization.</li>
+                  <li>Eliminated memory bottlenecks via zero-copy DMA buffers between the CMOS sensor and display framebuffers.</li>
+                </ul>
               </div>
-              <h3 class="project-title font-serif">Vision-x: Real-Time Vision AI Object Detection</h3>
-              <ul class="project-bullets">
-                <li>Engineered on <strong>Renesas RA8P1</strong> using <strong>μT-Kernel 3.0 (TRON RTOS)</strong> with a multithreaded architecture for concurrent camera capture, NPU inference, and LCD rendering with deterministic real-time performance.</li>
-                <li>Integrated and optimized an <strong>INT8 YOLOX</strong> object detection model on the <strong>Arm Ethos-U55 NPU</strong>, implementing CPU–NPU shared-memory synchronization.</li>
-              </ul>
+              <div>
+                <div class="tech-tags">
+                  <span class="tech-pill">Renesas RA8P1</span>
+                  <span class="tech-pill">μT-Kernel 3.0</span>
+                  <span class="tech-pill">Arm Ethos-U55</span>
+                  <span class="tech-pill">YOLOX INT8</span>
+                  <span class="tech-pill">C</span>
+                  <span class="tech-pill">e2 studio</span>
+                </div>
+                <div class="card-footer">
+                  <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub Repository</span>
+                  </a>
+                  <span class="card-date">Real-Time RTOS</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="tech-tags">
-                <span class="tech-pill">Renesas RA8P1</span>
-                <span class="tech-pill">μT-Kernel 3.0</span>
-                <span class="tech-pill">Arm Ethos-U55</span>
-                <span class="tech-pill">YOLOX INT8</span>
-                <span class="tech-pill">C</span>
-                <span class="tech-pill">e2 studio</span>
-              </div>
-              <div class="card-footer">
-                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  <span>GitHub Repository</span>
-                </a>
-                <span class="card-date">Real-Time RTOS</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2: LATTEYES -->
-          <article class="project-card" data-category="edge-ai">
-            <div>
-              <div class="card-meta">
-                <span class="card-badge gold">VLSID 2026 Winner (92% Acc)</span>
-                <span class="card-date">JAN 2026</span>
-              </div>
-              <h3 class="project-title font-serif">LATTEYES: Multi-Purpose Edge-AI Surveillance</h3>
-              <ul class="project-bullets">
-                <li>Designed a 4-mode Edge-AI surveillance system (Intruder, Wildlife, Industrial Fire, Border/Drone) on <strong>Lattice CertusPro-NX FPGA</strong>, achieving <strong>92% object detection accuracy</strong>.</li>
-                <li>Implemented <strong>MobileNetV2-SSD</strong> on an FPGA-based CNN accelerator, enabling efficient real-time object detection at the edge.</li>
-                <li>Integrated HM0360 camera, dual-PIR sensors, and AXI Interface for real-time bounding box rendering and live annotated streaming without cloud dependency.</li>
-              </ul>
-            </div>
-            <div>
-              <div class="tech-tags">
-                <span class="tech-pill">CertusPro-NX FPGA</span>
-                <span class="tech-pill">MobileNetV2-SSD</span>
-                <span class="tech-pill">Verilog RTL</span>
-                <span class="tech-pill">AXI Interface</span>
-                <span class="tech-pill">Radiant</span>
-              </div>
-              <div class="card-footer">
-                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  <span>GitHub Repository</span>
-                </a>
-                <span class="card-date">CNN Accelerator</span>
+            
+            <!-- Prototype Media (Right Column) -->
+            <div class="project-prototype-col">
+              <div class="prototype-media-wrap">
+                <img src="tron_prototype.jpeg" alt="Vision-x Renesas RA8P1 Prototype Setup" loading="lazy" />
+                <div class="prototype-overlay-pill">
+                  <span class="prototype-badge">Renesas RA8P1 &bull; μT-Kernel 3.0</span>
+                  <span class="prototype-badge-sub">Hardware Prototype</span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Project 3: SafeLink -->
-          <article class="project-card" data-category="hardware">
-            <div>
-              <div class="card-meta">
-                <span class="card-badge">Hardware Cryptography</span>
-                <span class="card-date">FEB 2026</span>
+          <!-- Project 2: LATTEYES (Video Prototype on Hover) -->
+          <article class="project-card" data-category="edge-ai" data-project="latteyes">
+            <div class="project-content">
+              <div>
+                <div class="card-meta">
+                  <span class="card-badge gold">VLSID 2026 Winner (92% Acc)</span>
+                  <span class="card-date">JAN 2026</span>
+                </div>
+                <h3 class="project-title font-serif">LATTEYES: Multi-Purpose Edge-AI Surveillance</h3>
+                <ul class="project-bullets">
+                  <li>Designed a 4-mode Edge-AI surveillance system (Intruder, Wildlife, Industrial Fire, Border/Drone) on <strong>Lattice CertusPro-NX FPGA</strong>, achieving <strong>92% object detection accuracy</strong>.</li>
+                  <li>Implemented <strong>MobileNetV2-SSD</strong> on an FPGA-based CNN accelerator, enabling efficient real-time object detection at the edge.</li>
+                  <li>Integrated HM0360 camera, dual-PIR sensors, and AXI Interface for real-time bounding box rendering and live annotated streaming without cloud dependency.</li>
+                </ul>
               </div>
-              <h3 class="project-title font-serif">SafeLink: Secure Real-Time SPN Encryption</h3>
-              <ul class="project-bullets">
-                <li>Established a hardware-based secure sensor communication system on <strong>Zynq-7000 FPGA (ZedBoard)</strong> using pure <strong>Verilog RTL</strong>, achieving deterministic real-time operation without CPU involvement.</li>
-                <li>Designed an 8-bit Substitution-Permutation Network (SPN) cipher engine with XOR key mixing, 4-bit S-box, permutation layer, and UART transmission.</li>
-              </ul>
+              <div>
+                <div class="tech-tags">
+                  <span class="tech-pill">CertusPro-NX FPGA</span>
+                  <span class="tech-pill">MobileNetV2-SSD</span>
+                  <span class="tech-pill">Verilog RTL</span>
+                  <span class="tech-pill">AXI Interface</span>
+                  <span class="tech-pill">Radiant</span>
+                </div>
+                <div class="card-footer">
+                  <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub Repository</span>
+                  </a>
+                  <span class="card-date">CNN Accelerator</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="tech-tags">
-                <span class="tech-pill">ZedBoard Zynq-7000</span>
-                <span class="tech-pill">Verilog RTL</span>
-                <span class="tech-pill">SPN Cipher</span>
-                <span class="tech-pill">Vivado</span>
-                <span class="tech-pill">UART</span>
-              </div>
-              <div class="card-footer">
-                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  <span>GitHub Repository</span>
-                </a>
-                <span class="card-date">Zero CPU Overhead</span>
+
+            <!-- Video Prototype (Hover to Play) -->
+            <div class="project-prototype-col">
+              <div class="prototype-media-wrap" id="latteyesWrap">
+                <video id="latteyesVideo" src="latteyes_prototype.mp4" poster="latteyes_poster.jpg" muted loop playsinline preload="auto"></video>
+                <div class="prototype-overlay-pill">
+                  <span class="hover-play-indicator">
+                    <span class="play-dot paused" id="latteyesDot"></span>
+                    <span id="latteyesIndicator">Hover to Play Demo</span>
+                  </span>
+                  <span class="prototype-badge">CertusPro-NX FPGA</span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Project 4: PiAssistant -->
-          <article class="project-card" data-category="edge-ai">
-            <div>
-              <div class="card-meta">
-                <span class="card-badge">Offline Voice AI</span>
-                <span class="card-date">FEB 2026</span>
+          <!-- Project 3: SafeLink (Architecture Schematic) -->
+          <article class="project-card" data-category="hardware" data-project="safelink">
+            <div class="project-content">
+              <div>
+                <div class="card-meta">
+                  <span class="card-badge">Hardware Cryptography</span>
+                  <span class="card-date">FEB 2026</span>
+                </div>
+                <h3 class="project-title font-serif">SafeLink: Secure Real-Time SPN Encryption</h3>
+                <ul class="project-bullets">
+                  <li>Established a hardware-based secure sensor communication system on <strong>Zynq-7000 FPGA (ZedBoard)</strong> using pure <strong>Verilog RTL</strong>, achieving deterministic real-time operation without CPU involvement.</li>
+                  <li>Designed an 8-bit Substitution-Permutation Network (SPN) cipher engine with XOR key mixing, 4-bit S-box, permutation layer, and UART transmission.</li>
+                  <li>Tested through hardware-in-the-loop validation, guaranteeing constant-time encryption resistant to timing side-channel attacks.</li>
+                </ul>
               </div>
-              <h3 class="project-title font-serif">PiAssistant: Offline Hindi Voice AI System</h3>
-              <ul class="project-bullets">
-                <li>Developed a completely offline, privacy-preserving Hindi voice assistant on <strong>Raspberry Pi 4</strong> integrating local ASR, LLM inference, and TTS.</li>
-                <li>Orchestrated <strong>Whisper</strong>, <strong>Ollama (Gemma)</strong>, and <strong>Piper</strong> into a low-latency, real-time voice pipeline optimized for embedded edge execution with zero cloud dependence.</li>
-              </ul>
+              <div>
+                <div class="tech-tags">
+                  <span class="tech-pill">ZedBoard Zynq-7000</span>
+                  <span class="tech-pill">Verilog RTL</span>
+                  <span class="tech-pill">SPN Cipher</span>
+                  <span class="tech-pill">Vivado</span>
+                  <span class="tech-pill">UART</span>
+                </div>
+                <div class="card-footer">
+                  <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub Repository</span>
+                  </a>
+                  <span class="card-date">Zero CPU Overhead</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="tech-tags">
-                <span class="tech-pill">Raspberry Pi 4</span>
-                <span class="tech-pill">Whisper</span>
-                <span class="tech-pill">Ollama Gemma</span>
-                <span class="tech-pill">Piper TTS</span>
-                <span class="tech-pill">Python</span>
-              </div>
-              <div class="card-footer">
-                <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  <span>GitHub Repository</span>
-                </a>
-                <span class="card-date">100% On-Device</span>
+
+            <!-- Schematic Diagram (Right Column) -->
+            <div class="project-prototype-col">
+              <div class="prototype-schematic-wrap">
+                <div class="schematic-header">
+                  <span class="schematic-title font-mono">RTL SPN CIPHER ARCHITECTURE</span>
+                  <span class="schematic-status">Deterministic RTL</span>
+                </div>
+                <div class="schematic-body">
+                  <div class="rtl-block">Sensor UART RX &bull; 8-Bit Stream</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">Key Mixing Layer (XOR Round Key)</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block">Non-Linear 4-Bit S-Box Substitution</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block">Bit Permutation Diffusion Stage</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">Ciphertext UART TX &bull; 0 CPU Overhead</div>
+                </div>
+                <div class="prototype-overlay-pill">
+                  <span class="prototype-badge">ZedBoard Zynq-7000</span>
+                  <span class="prototype-badge-sub">Hardware Cryptography</span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Project 5: IMD Platform -->
-          <article class="project-card" data-category="production">
-            <div>
-              <div class="card-meta">
-                <span class="card-badge gold">Deployed at RMC Chennai</span>
-                <span class="card-date">MAY - JUN 2026</span>
+          <!-- Project 4: PiAssistant (Voice AI Pipeline) -->
+          <article class="project-card" data-category="edge-ai" data-project="piassistant">
+            <div class="project-content">
+              <div>
+                <div class="card-meta">
+                  <span class="card-badge">Offline Voice AI</span>
+                  <span class="card-date">FEB 2026</span>
+                </div>
+                <h3 class="project-title font-serif">PiAssistant: Offline Hindi Voice AI System</h3>
+                <ul class="project-bullets">
+                  <li>Developed a completely offline, privacy-preserving Hindi voice assistant on <strong>Raspberry Pi 4</strong> integrating local ASR, LLM inference, and TTS.</li>
+                  <li>Orchestrated <strong>Whisper</strong>, <strong>Ollama (Gemma)</strong>, and <strong>Piper</strong> into a low-latency, real-time voice pipeline optimized for embedded edge execution with zero cloud dependence.</li>
+                  <li>Achieved autonomous operation in air-gapped environments without external network APIs.</li>
+                </ul>
               </div>
-              <h3 class="project-title font-serif">AWS–ARG Automated Quality Control &amp; Telemetry Platform</h3>
-              <ul class="project-bullets">
-                <li>Developed a Python-based platform for <strong>India Meteorological Department (IMD)</strong> used daily by the Regional Meteorological Centre (RMC), Chennai.</li>
-                <li>Automates sensor validation, fault analysis, GSM-based telemetry parsing, and operational reporting compliant with World Meteorological Organization (WMO) standards.</li>
-              </ul>
+              <div>
+                <div class="tech-tags">
+                  <span class="tech-pill">Raspberry Pi 4</span>
+                  <span class="tech-pill">Whisper</span>
+                  <span class="tech-pill">Ollama Gemma</span>
+                  <span class="tech-pill">Piper TTS</span>
+                  <span class="tech-pill">Python</span>
+                </div>
+                <div class="card-footer">
+                  <a href="https://github.com/S-S-JHOTHEESHWAR" target="_blank" class="card-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub Repository</span>
+                  </a>
+                  <span class="card-date">100% On-Device</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="tech-tags">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">AWS / ARG</span>
-                <span class="tech-pill">GSM Telemetry</span>
-                <span class="tech-pill">Quality Control</span>
-                <span class="tech-pill">WMO Standards</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-link" style="color: #4ade80;">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>In Daily Production at RMC Chennai</span>
-                </span>
-                <span class="card-date">IMD Chennai</span>
+
+            <!-- Voice Pipeline (Right Column) -->
+            <div class="project-prototype-col">
+              <div class="prototype-schematic-wrap">
+                <div class="schematic-header">
+                  <span class="schematic-title font-mono">OFFLINE VOICE AI PIPELINE</span>
+                  <span class="schematic-status">Air-Gapped</span>
+                </div>
+                <div class="schematic-body">
+                  <div class="rtl-block">Microphone Raw Audio Input</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">Whisper INT8 Speech-to-Text</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block">Ollama Gemma 2B Local LLM</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">Piper Neural Text-to-Speech Output</div>
+                </div>
+                <div class="prototype-overlay-pill">
+                  <span class="prototype-badge">Raspberry Pi 4</span>
+                  <span class="prototype-badge-sub">Zero Network APIs</span>
+                </div>
               </div>
             </div>
           </article>
+
+          <!-- Project 5: AWS–ARG Automated QC -->
+          <article class="project-card" data-category="production" data-project="aws-arg">
+            <div class="project-content">
+              <div>
+                <div class="card-meta">
+                  <span class="card-badge gold">Deployed at RMC Chennai</span>
+                  <span class="card-date">MAY - JUN 2026</span>
+                </div>
+                <h3 class="project-title font-serif">AWS–ARG Automated Quality Control &amp; Telemetry Platform</h3>
+                <ul class="project-bullets">
+                  <li>Developed a Python-based platform for <strong>India Meteorological Department (IMD)</strong> used daily by the Regional Meteorological Centre (RMC), Chennai.</li>
+                  <li>Automates sensor validation, fault analysis, GSM-based telemetry parsing, and operational reporting compliant with World Meteorological Organization (WMO) standards.</li>
+                  <li>Processes real-time environmental data streams across Southern India weather observatories.</li>
+                </ul>
+              </div>
+              <div>
+                <div class="tech-tags">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">AWS / ARG</span>
+                  <span class="tech-pill">GSM Telemetry</span>
+                  <span class="tech-pill">Quality Control</span>
+                  <span class="tech-pill">WMO Standards</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-link" style="color: #4ade80;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Production Verified (IMD)</span>
+                  </span>
+                  <span class="card-date">Daily Operational Use</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Telemetry Pipeline (Right Column) -->
+            <div class="project-prototype-col">
+              <div class="prototype-schematic-wrap">
+                <div class="schematic-header">
+                  <span class="schematic-title font-mono">TELEMETRY &amp; QC PIPELINE</span>
+                  <span class="schematic-status">Operational</span>
+                </div>
+                <div class="schematic-body">
+                  <div class="rtl-block">Automatic Weather Station (AWS) Grid</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">GSM Ingest &amp; Packet Extraction</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block">WMO Sensor QC &amp; Fault Detection</div>
+                  <div class="rtl-arrow">&darr;</div>
+                  <div class="rtl-block active">Automated Daily Report &amp; Dashboard</div>
+                </div>
+                <div class="prototype-overlay-pill">
+                  <span class="prototype-badge">IMD / RMC Chennai</span>
+                  <span class="prototype-badge-sub">Regional Telemetry Grid</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -1840,122 +2273,6 @@
       </div>
     </section>
 
-    <!-- ==================== 6. ABOUT ME SECTION (SINGLE UNIFIED) ==================== -->
-    <section class="view-section" id="view-about">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title font-serif">About Me</h2>
-          <p class="section-subtitle">The journey of an aspiring chip designer and edge AI engineer</p>
-        </div>
-
-        <div class="about-unified-wrap">
-          <!-- Spotlight Profile Card with jho.jpeg -->
-          <div class="about-profile-card">
-            <div class="about-avatar">
-              <img src="jho.jpeg" alt="Jhotheeshwar S S" />
-            </div>
-            <div class="about-details">
-              <h3 class="font-serif">Jhotheeshwar S S</h3>
-              <div class="about-role-tag">
-                <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
-                <span>3rd Year VLSI Undergraduate · Chennai Institute of Technology</span>
-              </div>
-
-              <div class="about-facts-grid">
-                <div class="about-fact-box">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  <div><strong>Degree:</strong> B.E. VLSI (CIT Chennai) · CGPA 8.4</div>
-                </div>
-                <div class="about-fact-box">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                  <div><strong>Schooling:</strong> Kendriya Vidyalaya (1st–12th)</div>
-                </div>
-                <div class="about-fact-box">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  <div><strong>Core Focus:</strong> VLSI &amp; Edge AI Accelerators</div>
-                </div>
-                <div class="about-fact-box">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <div><strong>Philosophy:</strong> Learn something new every day</div>
-                </div>
-              </div>
-
-              <div style="display:flex;gap:0.85rem;flex-wrap:wrap;align-items:center;">
-                <a href="resume.pdf" target="_blank" download class="btn-primary" style="padding:0.65rem 1.5rem;font-size:0.88rem;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  <span>Download Resume (PDF)</span>
-                </a>
-                <button class="btn-secondary" onclick="switchSection('contact')" style="padding:0.65rem 1.4rem;font-size:0.88rem;">
-                  <span>Get in Touch</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Single Unified Narrative Card -->
-          <div class="about-narrative-card">
-            <p>
-              Greetings! I am <strong>Jhotheeshwar</strong>, currently a 3rd-year <strong>B.E. Electronics Engineering (VLSI Design and Technology)</strong> undergraduate at <strong>Chennai Institute of Technology (CIT Chennai)</strong>. I completed all my schooling from 1st through 12th standard at <strong>Kendriya Vidyalaya</strong>.
-            </p>
-
-            <p>
-              My journey began around the age of 12. While most kids my age simply consumed technology, I couldn't stop questioning everything about how it actually functioned. How does a television beam moving pictures across a flat piece of glass? How can a simple pocket calculator solve complex arithmetic sums instantaneously? But the single question that captivated my mind and set my life's direction was:
-            </p>
-
-            <div class="about-quote-box">
-              &ldquo;How can mere electricity solve mathematical problems?&rdquo;
-            </div>
-
-            <p>
-              In <strong>Class 9</strong>, I was first introduced to the concept of <em>programming</em>&mdash;the realization that human logic could be translated into machine instructions. By <strong>Class 11</strong>, I began learning <strong>Python</strong>, which deepened my fascination with modern computing abstractions and the digital world.
-            </p>
-
-            <p>
-              After completing Class 12, I wanted to understand the physical hardware beneath the code. My brother suggested I explore the specialized <strong>VLSI (Very Large Scale Integration)</strong> degree at CIT Chennai. Researching the semiconductor industry and microchip fabrication quickly showed me that silicon is the physical realm where physics, electricity, and logic converge. It was the direct answer to the question I asked when I was 12, and I knew immediately that this was where I wanted to dedicate my engineering career.
-            </p>
-
-            <p>
-              Since joining college, I have developed numerous hardware projects, prototyping on FPGAs such as the <strong>Lattice CertusPro-NX</strong>, <strong>ZedBoard (Zynq-7000)</strong>, <strong>AMD Kria KV260</strong>, and <strong>Tang Nano-9K</strong>, as well as microcontrollers and MPUs including the <strong>Renesas RA8P1 &amp; RA6E2</strong>, <strong>Raspberry Pi 4</strong>, and <strong>ESP32</strong>.
-            </p>
-
-            <p>
-              Above all, I live by the philosophy that <strong>the true purpose of life is to learn something new every single day</strong>. That relentless curiosity pushes me to explore novel hardware architectures, optimize real-time algorithms, and dive into emerging tech.
-            </p>
-
-            <p>
-              Outside of engineering and academics, I believe in staying well-rounded: I enjoy <strong>swimming</strong>, playing <strong>chess</strong>, and <strong>hanging out with friends</strong>.
-            </p>
-
-            <div class="hobbies-row">
-              <span class="hobby-tag">🏊 Swimming</span>
-              <span class="hobby-tag">♟️ Playing Chess</span>
-              <span class="hobby-tag">👥 Hanging Out with Friends</span>
-              <span class="hobby-tag">⚡ Continuous Daily Learning</span>
-            </div>
-          </div>
-
-          <!-- Skills Marquee -->
-          <div class="skills-marquee-wrap">
-            <div class="skills-marquee-track">
-              <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
-              <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
-              <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
-              <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
-              <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
-              <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
-              <!-- Loop duplicate -->
-              <span>Verilog RTL</span><span>C (Embedded)</span><span>Python</span><span>Java</span><span>Assembly</span>
-              <span>Renesas RA8P1</span><span>ESP32</span><span>Raspberry Pi</span><span>μT-Kernel 3.0</span>
-              <span>Lattice CertusPro-NX</span><span>ZedBoard Zynq-7000</span><span>AMD Kria KV260</span>
-              <span>CAN Bus</span><span>AXI</span><span>UART</span><span>SPI</span><span>I2C</span><span>JTAG</span>
-              <span>PyTorch</span><span>ONNX</span><span>TensorFlow</span><span>OpenCV</span><span>Arm Ethos-U55</span>
-              <span>Synopsys</span><span>Cadence</span><span>Vivado</span><span>Radiant</span><span>e2 studio</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ==================== 7. CONTACT SECTION (DEDICATED) ==================== -->
     <section class="view-section" id="view-contact">
       <div class="container">
@@ -2053,7 +2370,7 @@
     <div class="container footer-content">
       <div class="brand-title font-serif" style="margin-bottom: 0;" onclick="switchSection('home')">S S JHOTHEESHWAR</div>
       <p style="color: var(--text-muted);">
-        Hardware Powers AI &copy; 2026 S S Jhotheeshwar. Built with precision.
+        &copy; 2026 S S Jhotheeshwar. Built with precision.
       </p>
       <div class="footer-links">
         <span class="footer-link" onclick="switchSection('home')">Home</span>
@@ -2070,8 +2387,11 @@
 
   <!-- Interactive JavaScript -->
   <script>
-    // ===== INDIVIDUAL SECTION (TAB) SWITCHER =====
+        // ===== INDIVIDUAL SECTION (TAB) SWITCHER =====
     function switchSection(sectionId) {
+      const isAbout = (sectionId === 'about');
+      const activeTargetId = isAbout ? 'home' : sectionId;
+
       // Hide all view sections
       const sections = document.querySelectorAll('.view-section');
       sections.forEach(sec => {
@@ -2079,7 +2399,7 @@
       });
 
       // Show selected view section
-      const targetSec = document.getElementById('view-' + sectionId);
+      const targetSec = document.getElementById('view-' + activeTargetId);
       if (targetSec) {
         targetSec.classList.add('active-view');
       }
@@ -2087,7 +2407,10 @@
       // Update active nav button
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('data-section') === sectionId) {
+        const dataSec = btn.getAttribute('data-section');
+        if (dataSec === sectionId) {
+          btn.classList.add('active');
+        } else if (!dataSec && btn.textContent.trim().toLowerCase() === sectionId) {
           btn.classList.add('active');
         }
       });
@@ -2098,8 +2421,17 @@
         mobileMenu.classList.remove('open');
       }
 
-      // Smooth scroll to top of section
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Smooth scroll
+      if (isAbout) {
+        setTimeout(() => {
+          const aboutAnchor = document.getElementById('about-story');
+          if (aboutAnchor) {
+            aboutAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 60);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // Mobile menu toggle button
@@ -2111,7 +2443,7 @@
       });
     }
 
-    // Projects Filter Chips
+        // Projects Filter Chips
     const filterButtons = document.querySelectorAll('.chip-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -2123,11 +2455,11 @@
         const filter = btn.getAttribute('data-filter');
         projectCards.forEach(card => {
           if (filter === 'all') {
-            card.style.display = 'flex';
+            card.style.display = 'grid';
           } else {
             const categories = card.getAttribute('data-category') || '';
             if (categories.includes(filter)) {
-              card.style.display = 'flex';
+              card.style.display = 'grid';
             } else {
               card.style.display = 'none';
             }
@@ -2135,6 +2467,50 @@
         });
       });
     });
+
+    // ===== LATTEYES PROTOTYPE VIDEO HOVER-TO-PLAY =====
+    const latteyesCard = document.querySelector('[data-project="latteyes"]');
+    const latteyesVideo = document.getElementById('latteyesVideo');
+    const latteyesIndicator = document.getElementById('latteyesIndicator');
+    const latteyesDot = document.getElementById('latteyesDot');
+
+    if (latteyesCard && latteyesVideo) {
+      // Play when cursor enters the card
+      latteyesCard.addEventListener('mouseenter', () => {
+        latteyesVideo.play().then(() => {
+          if (latteyesIndicator) latteyesIndicator.textContent = 'Playing Demo';
+          if (latteyesDot) {
+            latteyesDot.classList.remove('paused');
+          }
+        }).catch(err => {
+          // Autoplay policy fallback
+          console.log('Video play interrupted:', err);
+        });
+      });
+
+      // Pause when cursor leaves the card
+      latteyesCard.addEventListener('mouseleave', () => {
+        latteyesVideo.pause();
+        if (latteyesIndicator) latteyesIndicator.textContent = 'Hover to Play Demo';
+        if (latteyesDot) {
+          latteyesDot.classList.add('paused');
+        }
+      });
+
+      // Click / Tap support for touch / mobile screens
+      latteyesVideo.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (latteyesVideo.paused) {
+          latteyesVideo.play();
+          if (latteyesIndicator) latteyesIndicator.textContent = 'Playing Demo';
+          if (latteyesDot) latteyesDot.classList.remove('paused');
+        } else {
+          latteyesVideo.pause();
+          if (latteyesIndicator) latteyesIndicator.textContent = 'Hover to Play Demo';
+          if (latteyesDot) latteyesDot.classList.add('paused');
+        }
+      });
+    }
 
     // FAQ Accordion
     const faqButtons = document.querySelectorAll('.faq-btn');
